@@ -530,6 +530,7 @@
       <button class="nav-btn active" data-screen="study">Учёба</button>
       <button class="nav-btn" data-screen="add">Добавить</button>
       <button class="nav-btn" data-screen="dict">Словарь</button>
+      <button class="nav-btn" data-screen="learned">Изученное</button>
       <button class="nav-btn" data-screen="stats">Статистика</button>
       <button class="nav-btn" data-screen="data">Данные</button>
     </nav>
@@ -617,10 +618,25 @@
     <!-- Словарь -->
     <section id="screen-dict" class="screen">
       <div class="panel">
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:12px">Слова в процессе изучения. Полностью выученные — в разделе «Изученное».</p>
         <div class="search-bar">
           <input id="dict-search" placeholder="Поиск по словам...">
         </div>
         <ul class="word-list" id="word-list"></ul>
+      </div>
+    </section>
+
+    <!-- Изученное -->
+    <section id="screen-learned" class="screen">
+      <div class="panel">
+        <h2 style="margin-bottom:4px">Изученное</h2>
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:12px">
+          Сюда попадают слова, отмеченные «Легко» не меньше 5 раз и встреченные минимум в 2 занятиях.
+        </p>
+        <div class="search-bar">
+          <input id="learned-search" placeholder="Поиск...">
+        </div>
+        <ul class="word-list" id="learned-list"></ul>
       </div>
     </section>
 
@@ -656,6 +672,8 @@
   <script>
     const STORAGE_KEY = 'it-english-data-v5';
     const SESSION_SIZE = 50;
+    const LEARNED_EASY_MIN = 5;
+    const LEARNED_SESSION_MIN = 2;
 
     function uid() {
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -737,8 +755,53 @@
         repetitions: 0,
         nextReview: null,
         wrongCount: 0,
-        lastStudied: null
+        lastStudied: null,
+        easyCount: 0,
+        sessionCount: 0,
+        lastGrade: null,
+        learned: false,
+        learnedAt: null
       };
+    }
+
+    function isLearned(cardId) {
+      return !!getProgress(cardId).learned;
+    }
+
+    function difficultyScore(card) {
+      const p = getProgress(card.id);
+      let score = p.wrongCount * 10 + (3 - p.ease) * 5;
+      if (p.lastGrade === 0) score += 20;
+      if (p.lastGrade === 1) score += 10;
+      if (p.easyCount >= 3) score -= 4;
+      if (p.repetitions >= 2) score -= 3;
+      return score;
+    }
+
+    function maybeMarkLearned(cardId) {
+      const p = { ...getProgress(cardId) };
+      if (p.learned) return false;
+      if (p.easyCount >= LEARNED_EASY_MIN && p.sessionCount >= LEARNED_SESSION_MIN) {
+        p.learned = true;
+        p.learnedAt = new Date().toISOString();
+        appData.progress[cardId] = p;
+        saveData();
+        const card = appData.cards.find(c => c.id === cardId);
+        toast(`«${card ? card.english : 'Слово'}» перенесено в «Изученное»`);
+        return true;
+      }
+      return false;
+    }
+
+    function restoreToStudy(cardId) {
+      const p = { ...getProgress(cardId) };
+      p.learned = false;
+      p.learnedAt = null;
+      appData.progress[cardId] = p;
+      saveData();
+      renderLearned();
+      renderDict();
+      toast('Слово снова в учёбе');
     }
 
     function isDue(cardId) {
@@ -748,18 +811,29 @@
     }
 
     function buildQueue(cards) {
-      const list = [...cards];
-      list.sort((a, b) => {
-        const pa = getProgress(a.id);
-        const pb = getProgress(b.id);
-        const dueA = isDue(a.id) ? 0 : 1;
-        const dueB = isDue(b.id) ? 0 : 1;
-        if (dueA !== dueB) return dueA - dueB;
-        if (pb.wrongCount !== pa.wrongCount) return pb.wrongCount - pa.wrongCount;
-        if (pa.ease !== pb.ease) return pa.ease - pb.ease;
-        return 0;
+      const active = cards.filter(c => !isLearned(c.id));
+      const pool = [];
+      active.forEach(card => {
+        const p = getProgress(card.id);
+        let copies = 1;
+        if (p.wrongCount >= 1) copies++;
+        if (p.wrongCount >= 3) copies += 2;
+        if (p.ease < 2.0) copies++;
+        if (p.lastGrade === 0) copies += 2;
+        if (p.lastGrade === 1) copies++;
+        if (p.easyCount >= 4) copies = Math.max(1, copies - 1);
+        for (let i = 0; i < copies; i++) pool.push(card);
       });
-      return list;
+      pool.sort((a, b) => difficultyScore(b) - difficultyScore(a));
+      return pool;
+    }
+
+    function getActiveCards() {
+      return appData.cards.filter(c => !isLearned(c.id));
+    }
+
+    function getLearnedCards() {
+      return appData.cards.filter(c => isLearned(c.id));
     }
 
     function getSortedCards() {
@@ -772,12 +846,16 @@
       const groups = [];
       for (let i = 0; i < sorted.length; i += SESSION_SIZE) {
         const cards = sorted.slice(i, i + SESSION_SIZE);
+        const activeCount = cards.filter(c => !isLearned(c.id)).length;
+        const learnedCount = cards.length - activeCount;
         groups.push({
           id: groups.length,
           cards,
           from: i + 1,
           to: i + cards.length,
-          title: `Сессия ${groups.length + 1}`
+          title: `Сессия ${groups.length + 1}`,
+          activeCount,
+          learnedCount
         });
       }
       return groups;
@@ -801,10 +879,12 @@
     let cardFlipped = false;
     let currentCard = null;
     let currentSessionId = null;
+    let sessionRatedCards = new Set();
 
     function rateCard(cardId, grade) {
       const p = { ...getProgress(cardId) };
       const now = new Date();
+      p.lastGrade = grade;
 
       if (grade === 0) {
         p.repetitions = 0;
@@ -829,11 +909,35 @@
         p.interval = Math.max(p.interval, 4);
         p.interval = Math.round(p.interval * p.ease * 1.3);
         p.nextReview = addDays(now, p.interval).toISOString();
+        p.easyCount = (p.easyCount || 0) + 1;
       }
 
       p.lastStudied = now.toISOString();
       appData.progress[cardId] = p;
       saveData();
+      maybeMarkLearned(cardId);
+    }
+
+    function finishSessionRatings() {
+      if (!sessionRatedCards.size) return;
+      sessionRatedCards.forEach(cardId => {
+        if (isLearned(cardId)) return;
+        const p = { ...getProgress(cardId) };
+        p.sessionCount = (p.sessionCount || 0) + 1;
+        appData.progress[cardId] = p;
+        maybeMarkLearned(cardId);
+      });
+      sessionRatedCards.clear();
+      saveData();
+    }
+
+    function insertCardRepeats(card, grade) {
+      if (isLearned(card.id)) return;
+      const plan = grade === 0 ? [2, 5, 10] : (grade === 1 ? [3, 7] : []);
+      plan.forEach(offset => {
+        const pos = Math.min(sessionIndex + offset, sessionQueue.length);
+        sessionQueue.splice(pos, 0, card);
+      });
     }
 
     function addDays(date, days) {
@@ -861,12 +965,17 @@
         let status = 'Не начата';
         if (prog.finished) status = '✓ Пройдена';
         else if (done > 0) status = `В процессе (${done}/${total})`;
-        const btnLabel = prog.finished ? 'Повторить' : (done > 0 ? 'Продолжить' : 'Начать');
+        const learnedNote = g.learnedCount > 0
+          ? ` · <span style="color:var(--success)">${g.learnedCount} изучено</span>` : '';
+        const activeNote = g.activeCount === 0
+          ? '<div class="meta" style="color:var(--success)">Все слова сессии в «Изученном»</div>'
+          : `<div class="meta">${status} · ${g.activeCount} в учёбе${learnedNote}</div>`;
+        const btnLabel = g.activeCount === 0 ? 'Повторить' : (prog.finished ? 'Повторить' : (done > 0 ? 'Продолжить' : 'Начать'));
         return `<li class="session-item">
           <div style="flex:1">
             <strong>${g.title}</strong>
             <span class="tag">слова ${g.from}–${g.to}</span>
-            <div class="meta">${status} · ${total} карточек</div>
+            ${activeNote}
             <div class="session-bar"><div class="session-bar-fill" style="width:${pct}%"></div></div>
           </div>
           <button class="btn-primary btn-sm" onclick="startSessionById(${g.id})">${btnLabel}</button>
@@ -889,15 +998,27 @@
       const group = getSessionGroups()[sessionId];
       if (!group) return;
       currentSessionId = sessionId;
+      sessionRatedCards = new Set();
       sessionQueue = buildQueue(group.cards);
       sessionIndex = 0;
       cardFlipped = false;
       showActiveSession();
+      if (sessionQueue.length === 0) {
+        document.getElementById('study-area').style.display = 'none';
+        document.getElementById('study-done').style.display = 'block';
+        document.getElementById('study-done').querySelector('p').textContent =
+          'Все слова этой сессии уже в «Изученном». Можете повторить или вернуть слова из папки.';
+        document.getElementById('session-title').textContent =
+          `${group.title} · слова ${group.from}–${group.to}`;
+        return;
+      }
       document.getElementById('study-area').style.display = 'block';
       document.getElementById('study-done').style.display = 'none';
+      document.getElementById('study-done').querySelector('p').textContent =
+        'Отличная работа. Сложные слова будут показаны чаще.';
       document.getElementById('session-title').textContent =
         `${group.title} · слова ${group.from}–${group.to}`;
-      saveSessionProgress(sessionId, { total: group.cards.length });
+      saveSessionProgress(sessionId, { total: group.activeCount || group.cards.length });
       showCurrentCard();
     }
 
@@ -929,7 +1050,11 @@
     }
 
     function showCurrentCard() {
+      while (sessionIndex < sessionQueue.length && isLearned(sessionQueue[sessionIndex].id)) {
+        sessionIndex++;
+      }
       if (sessionIndex >= sessionQueue.length) {
+        finishSessionRatings();
         if (currentSessionId !== null) {
           saveSessionProgress(currentSessionId, {
             completed: sessionQueue.length,
@@ -994,11 +1119,10 @@
     }
 
     function answerCard(grade) {
-      if (!currentCard) return;
+      if (!currentCard || isLearned(currentCard.id)) return;
+      sessionRatedCards.add(currentCard.id);
       rateCard(currentCard.id, grade);
-      if (grade === 0) {
-        sessionQueue.push(currentCard);
-      }
+      insertCardRepeats(currentCard, grade);
       sessionIndex++;
       if (currentSessionId !== null) {
         const group = getSessionGroups()[currentSessionId];
@@ -1031,6 +1155,7 @@
         btn.classList.add('active');
         document.getElementById('screen-' + btn.dataset.screen).classList.add('active');
         if (btn.dataset.screen === 'dict') renderDict();
+        if (btn.dataset.screen === 'learned') renderLearned();
         if (btn.dataset.screen === 'stats') renderStats();
         if (btn.dataset.screen === 'study') showSessionPicker();
       });
@@ -1191,6 +1316,41 @@
       const q = document.getElementById('dict-search').value.toLowerCase();
       const list = document.getElementById('word-list');
       const filtered = appData.cards.filter(c =>
+        !isLearned(c.id) && (
+          c.english.toLowerCase().includes(q) ||
+          c.russian.toLowerCase().includes(q) ||
+          c.meaning.toLowerCase().includes(q)
+        )
+      );
+      list.innerHTML = filtered.length
+        ? filtered.map(c => {
+            const p = getProgress(c.id);
+            const easyHint = p.easyCount > 0
+              ? `<div class="meta">«Легко»: ${p.easyCount}/${LEARNED_EASY_MIN} · занятий: ${p.sessionCount || 0}/${LEARNED_SESSION_MIN}</div>` : '';
+            return `<li class="word-item">
+              <div>
+                <strong>${esc(c.english)}</strong> — ${esc(c.russian)}
+                ${(c.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}
+                <div class="meta">${esc(c.meaning)}</div>
+                ${p.wrongCount > 0 ? `<div class="meta" style="color:var(--warning)">Ошибок: ${p.wrongCount}</div>` : ''}
+                ${easyHint}
+              </div>
+              <div class="word-actions">
+                <button onclick="editCard('${c.id}')">Изменить</button>
+                <button class="btn-danger" onclick="deleteCard('${c.id}')">Удалить</button>
+              </div>
+            </li>`;
+          }).join('')
+        : '<li style="color:var(--muted);padding:20px 0">Нет слов в учёбе (или ничего не найдено)</li>';
+    }
+
+    document.getElementById('dict-search').addEventListener('input', renderDict);
+
+    // --- Learned folder ---
+    function renderLearned() {
+      const q = document.getElementById('learned-search').value.toLowerCase();
+      const list = document.getElementById('learned-list');
+      const filtered = getLearnedCards().filter(c =>
         c.english.toLowerCase().includes(q) ||
         c.russian.toLowerCase().includes(q) ||
         c.meaning.toLowerCase().includes(q)
@@ -1203,38 +1363,38 @@
                 <strong>${esc(c.english)}</strong> — ${esc(c.russian)}
                 ${(c.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}
                 <div class="meta">${esc(c.meaning)}</div>
-                ${p.wrongCount > 0 ? `<div class="meta" style="color:var(--warning)">Ошибок: ${p.wrongCount}</div>` : ''}
+                <div class="meta" style="color:var(--success)">«Легко» × ${p.easyCount} · занятий: ${p.sessionCount}</div>
               </div>
               <div class="word-actions">
-                <button onclick="editCard('${c.id}')">Изменить</button>
-                <button class="btn-danger" onclick="deleteCard('${c.id}')">Удалить</button>
+                <button onclick="restoreToStudy('${c.id}')">Вернуть в учёбу</button>
               </div>
             </li>`;
           }).join('')
-        : '<li style="color:var(--muted);padding:20px 0">Ничего не найдено</li>';
+        : '<li style="color:var(--muted);padding:20px 0">Пока нет изученных слов. Отмечайте «Легко» на разных занятиях.</li>';
     }
 
-    document.getElementById('dict-search').addEventListener('input', renderDict);
+    document.getElementById('learned-search').addEventListener('input', renderLearned);
 
     // --- Stats ---
     function renderStats() {
       const total = appData.cards.length;
-      let learned = 0, hard = 0;
+      const learnedFolder = getLearnedCards().length;
+      const inWork = total - learnedFolder;
+      let hard = 0;
       appData.cards.forEach(c => {
         const p = getProgress(c.id);
-        if (p.repetitions >= 2 && p.interval >= 3) learned++;
-        if (p.wrongCount >= 2) hard++;
+        if (!p.learned && p.wrongCount >= 2) hard++;
       });
 
       document.getElementById('stats-grid').innerHTML = `
         <div class="stat-box"><div class="num">${total}</div><div class="lbl">Всего слов</div></div>
-        <div class="stat-box"><div class="num">${learned}</div><div class="lbl">Хорошо знаю</div></div>
-        <div class="stat-box"><div class="num">${total - learned}</div><div class="lbl">В работе</div></div>
+        <div class="stat-box"><div class="num">${learnedFolder}</div><div class="lbl">Изученное</div></div>
+        <div class="stat-box"><div class="num">${inWork}</div><div class="lbl">В работе</div></div>
         <div class="stat-box"><div class="num">${hard}</div><div class="lbl">Сложные</div></div>`;
 
       const sorted = [...appData.cards]
         .map(c => ({ card: c, p: getProgress(c.id) }))
-        .filter(x => x.p.wrongCount > 0)
+        .filter(x => !x.p.learned && x.p.wrongCount > 0)
         .sort((a, b) => b.p.wrongCount - a.p.wrongCount || a.p.ease - b.p.ease)
         .slice(0, 10);
 
@@ -1328,6 +1488,7 @@
   window.editCard = editCard;
   window.deleteCard = deleteCard;
   window.startSessionById = startSessionById;
+  window.restoreToStudy = restoreToStudy;
 
     showSessionPicker();
   </script>
