@@ -548,75 +548,16 @@
 
   <div class="toast" id="toast"></div>
 
+  <script src="cards-data.js"></script>
   <script>
-    const STORAGE_KEY = 'it-english-data-v1';
-
-  const SEED_CARDS = [
-    { english: "prompt", russian: "запрос, подсказка", meaning: "Текст, который вы пишете ИИ, чтобы он понял, что вам нужно. Чем яснее запрос — тем лучше ответ.", example: "Write a clear prompt.", tags: ["ИИ"] },
-    { english: "generate", russian: "создать, сгенерировать", meaning: "Кнопка или команда «сделай заново» — ИИ придумает новый текст, картинку или ответ.", example: "Click Generate to create a new image.", tags: ["ИИ"] },
-    { english: "regenerate", russian: "переделать", meaning: "Попросить ИИ сделать ответ ещё раз, если первый вариант не понравился.", example: "Regenerate the response.", tags: ["ИИ"] },
-    { english: "settings", russian: "настройки", meaning: "Раздел, где можно изменить язык, тему оформления, уведомления и другие параметры программы.", example: "Open Settings to change the language.", tags: ["сайт"] },
-    { english: "dashboard", russian: "главная панель", meaning: "Страница со сводкой: здесь видно основную информацию, кнопки и быстрый доступ к разделам.", example: "Go to your dashboard.", tags: ["сайт"] },
-    { english: "sign in", russian: "войти", meaning: "Войти в свой аккаунт с помощью логина и пароля или через Google.", example: "Sign in to continue.", tags: ["сайт"] },
-    { english: "sign up", russian: "зарегистрироваться", meaning: "Создать новый аккаунт на сайте или в программе.", example: "Sign up for free.", tags: ["сайт"] },
-    { english: "log out", russian: "выйти", meaning: "Завершить сеанс работы — чтобы никто другой не мог зайти под вашим именем.", example: "Log out when you're done.", tags: ["сайт"] },
-    { english: "subscription", russian: "подписка", meaning: "Платный доступ к сервису на месяц или год. Обычно даёт больше возможностей, чем бесплатная версия.", example: "Manage your subscription.", tags: ["сайт"] },
-    { english: "upgrade", russian: "улучшить тариф", meaning: "Перейти на более дорогой план, чтобы получить больше функций.", example: "Upgrade to Pro.", tags: ["сайт"] },
-    { english: "notification", russian: "уведомление", meaning: "Сообщение от сайта или программы — например, что ответ готов или закончилась подписка.", example: "You have a new notification.", tags: ["сайт"] },
-    { english: "toggle", russian: "переключатель", meaning: "Кнопка-выключатель: нажали — включилось, нажали ещё раз — выключилось.", example: "Toggle dark mode on.", tags: ["сайт"] },
-    { english: "dropdown", russian: "выпадающий список", meaning: "Меню, которое открывается при нажатии и показывает варианты на выбор.", example: "Select a model from the dropdown.", tags: ["сайт"] },
-    { english: "sidebar", russian: "боковая панель", meaning: "Меню слева или справа на экране — там обычно список чатов, файлов или разделов.", example: "Open the sidebar.", tags: ["сайт"] },
-    { english: "tooltip", russian: "подсказка при наведении", meaning: "Короткое объяснение, которое появляется, когда вы наводите курсор на кнопку или значок.", example: "Hover to see the tooltip.", tags: ["сайт"] },
-    { english: "scroll", russian: "прокрутить", meaning: "Листать страницу вверх или вниз, чтобы увидеть остальной текст.", example: "Scroll down to read more.", tags: ["сайт"] },
-    { english: "upload", russian: "загрузить файл", meaning: "Отправить файл с компьютера на сайт — например, фото или документ для анализа ИИ.", example: "Upload a PDF file.", tags: ["сайт"] },
-    { english: "download", russian: "скачать", meaning: "Сохранить файл с сайта на свой компьютер.", example: "Download the report.", tags: ["сайт"] },
-    { english: "copy", russian: "скопировать", meaning: "Скопировать текст или ссылку в буфер обмена, чтобы вставить в другое место.", example: "Copy the answer.", tags: ["сайт"] },
-    { english: "paste", russian: "вставить", meaning: "Вставить ранее скопированный текст в поле ввода.", example: "Paste your text here.", tags: ["сайт"] },
-    { english: "search", russian: "поиск", meaning: "Найти нужное слово, файл или раздел на сайте.", example: "Search your chats.", tags: ["сайт"] },
-    { english: "filter", russian: "фильтр", meaning: "Показать только то, что подходит под условие — например, только картинки или только за последнюю неделю.", example: "Filter by date.", tags: ["сайт"] },
-    { english: "share", russian: "поделиться", meaning: "Отправить ссылку или результат другому человеку.", example: "Share this chat.", tags: ["сайт"] },
-    { english: "delete", russian: "удалить", meaning: "Убрать навсегда — чат, файл или запись.", example: "Delete this conversation.", tags: ["сайт"] },
-    { english: "archive", russian: "в архив", meaning: "Убрать из активного списка, но не удалять — можно вернуть позже.", example: "Archive old chats.", tags: ["сайт"] },
-    { english: "summarize", russian: "кратко пересказать", meaning: "Попросить ИИ выделить главное из длинного текста в нескольких предложениях.", example: "Summarize this article.", tags: ["ИИ"] },
-    { english: "translate", russian: "перевести", meaning: "Попросить ИИ перевести текст на другой язык.", example: "Translate to Russian.", tags: ["ИИ"] },
-    { english: "refine", russian: "улучшить, доработать", meaning: "Попросить ИИ сделать ответ точнее, короче или понятнее.", example: "Refine the draft.", tags: ["ИИ"] },
-    { english: "iterate", russian: "повторять, дорабатывать", meaning: "Снова и снова улучшать результат — менять запрос и смотреть новый ответ.", example: "Let's iterate on this idea.", tags: ["ИИ"] },
-    { english: "context", russian: "контекст, предыстория", meaning: "Вся предыдущая переписка и файлы, которые ИИ «помнит» в рамках одного разговора.", example: "The model lost context.", tags: ["ИИ"] },
-    { english: "context window", russian: "объём памяти чата", meaning: "Сколько текста ИИ может держать в голове за один раз. Если переписка слишком длинная — он начинает забывать начало.", example: "This chat exceeded the context window.", tags: ["ИИ"] },
-    { english: "token", russian: "единица текста", meaning: "ИИ считает текст кусочками — словами и частями слов. Чем больше текста, тем больше единиц тратится.", example: "This request uses many tokens.", tags: ["ИИ"] },
-    { english: "model", russian: "модель ИИ", meaning: "Конкретная версия искусственного интеллекта — например, GPT-4 или Claude. Разные модели по-разному отвечают.", example: "Choose a model.", tags: ["ИИ"] },
-    { english: "temperature", russian: "креативность ответа", meaning: "Настройка: низкое значение — ответы строгие и предсказуемые, высокое — более свободные и неожиданные.", example: "Lower the temperature for accuracy.", tags: ["ИИ"] },
-    { english: "hallucination", russian: "выдуманный ответ", meaning: "Когда ИИ уверенно пишет то, чего на самом деле нет — выдумывает факты или ссылки.", example: "Watch out for hallucinations.", tags: ["ИИ"] },
-    { english: "fine-tune", russian: "дообучить под задачу", meaning: "Дополнительно настроить ИИ под конкретную тему или стиль — как личный помощник для вашей работы.", example: "Fine-tune the model on your data.", tags: ["ИИ"] },
-    { english: "inference", russian: "работа ИИ", meaning: "Момент, когда модель думает и выдаёт ответ. Часто говорят о скорости или стоимости этого процесса.", example: "Inference is running.", tags: ["ИИ"] },
-    { english: "workflow", russian: "рабочий процесс", meaning: "Последовательность шагов: что делать сначала, что потом — чтобы дойти до результата.", example: "Automate your workflow.", tags: ["ИИ"] },
-    { english: "integration", russian: "подключение к другому сервису", meaning: "Связать одну программу с другой — например, ИИ-чат с почтой или таблицами.", example: "Set up an integration.", tags: ["ИИ"] },
-    { english: "sync", russian: "синхронизация", meaning: "Данные одинаковые на всех устройствах — изменили на телефоне, увидели на компьютере.", example: "Sync across devices.", tags: ["сайт"] },
-    { english: "deploy", russian: "запустить, опубликовать", meaning: "Выложить готовый проект в интернет, чтобы им могли пользоваться другие.", example: "Deploy the website.", tags: ["разработка"] },
-    { english: "debug", russian: "найти и исправить ошибку", meaning: "Разобраться, почему что-то не работает, и устранить проблему.", example: "Debug the code.", tags: ["разработка"] },
-    { english: "API", russian: "способ обмена данными", meaning: "«Язык», на котором одна программа просит другую что-то сделать — например, отправить запрос к ИИ.", example: "Connect via the API.", tags: ["разработка"] },
-    { english: "endpoint", russian: "точка входа", meaning: "Конкретный адрес в системе, куда отправляется запрос — как номер окошка в банке.", example: "Call the chat endpoint.", tags: ["разработка"] },
-    { english: "commit", russian: "сохранить изменения", meaning: "Зафиксировать правки в проекте с коротким описанием — как сохранить версию черновика.", example: "Commit your changes.", tags: ["разработка"] },
-    { english: "merge", russian: "объединить", meaning: "Слить две ветки правок в одну общую версию файлов.", example: "Merge the pull request.", tags: ["разработка"] },
-    { english: "branch", russian: "ветка", meaning: "Отдельная копия проекта для экспериментов — основная версия при этом не ломается.", example: "Create a new branch.", tags: ["разработка"] },
-    { english: "refactor", russian: "улучшить структуру", meaning: "Переписать код так, чтобы он стал понятнее и проще, не меняя суть работы.", example: "Refactor this module.", tags: ["разработка"] },
-    { english: "rollback", russian: "откатить назад", meaning: "Вернуться к предыдущей рабочей версии, если новая что-то сломала.", example: "Rollback the deployment.", tags: ["разработка"] },
-    { english: "onboarding", russian: "знакомство с сервисом", meaning: "Первые шаги для нового пользователя — подсказки, как пользоваться программой.", example: "Complete the onboarding.", tags: ["сайт"] }
-  ];
+    const STORAGE_KEY = 'it-english-data-v2';
 
     function uid() {
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
     }
 
-    function loadData() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const data = JSON.parse(raw);
-          if (data.cards && data.cards.length) return data;
-        }
-      } catch (e) {}
-      const cards = SEED_CARDS.map(c => ({
+    function seedToCard(c) {
+      return {
         id: uid(),
         english: c.english,
         russian: c.russian,
@@ -624,8 +565,52 @@
         example: c.example || '',
         tags: c.tags || [],
         createdAt: new Date().toISOString()
-      }));
-      return { cards, progress: {} };
+      };
+    }
+
+    function mergeSeedCards(existingCards) {
+      const byKey = new Map();
+      existingCards.forEach(c => byKey.set(c.english.toLowerCase(), c));
+      let added = 0;
+      SEED_CARDS.forEach(seed => {
+        const key = seed.english.toLowerCase();
+        if (!byKey.has(key)) {
+          byKey.set(key, seedToCard(seed));
+          added++;
+        }
+      });
+      return { cards: Array.from(byKey.values()), added };
+    }
+
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          if (data.cards && data.cards.length) {
+            const merged = mergeSeedCards(data.cards);
+            if (merged.added > 0) {
+              data.cards = merged.cards;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }
+            return data;
+          }
+        }
+        const v1 = localStorage.getItem('it-english-data-v1');
+        if (v1) {
+          const data = JSON.parse(v1);
+          if (data.cards && data.cards.length) {
+            const merged = mergeSeedCards(data.cards);
+            data.cards = merged.cards;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            return data;
+          }
+        }
+      } catch (e) {}
+      return {
+        cards: SEED_CARDS.map(seedToCard),
+        progress: {}
+      };
     }
 
     function saveData() {
