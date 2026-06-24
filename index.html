@@ -179,8 +179,21 @@
       font-size: 0.85rem;
       color: var(--accent);
       font-style: italic;
-      margin-top: 12px;
       max-width: 420px;
+    }
+
+    .card-example-wrap {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-speak-sm {
+      margin-top: 0;
+      padding: 6px 14px;
+      font-size: 0.78rem;
     }
 
     .card-hint {
@@ -718,6 +731,32 @@
       showCurrentCard();
     }
 
+    function renderExampleHtml(example) {
+      if (!example) return '';
+      return `
+        <div class="card-example-wrap">
+          <div class="card-example">${esc(example)}</div>
+          <button class="btn-speak btn-speak-sm btn-speak-example" type="button">🔊 Озвучить пример</button>
+        </div>`;
+    }
+
+    function attachSpeakHandlers() {
+      document.getElementById('btn-speak-front')?.addEventListener('click', e => {
+        e.stopPropagation();
+        speak(currentCard.english);
+      });
+      document.getElementById('btn-speak-back')?.addEventListener('click', e => {
+        e.stopPropagation();
+        speak(currentCard.english);
+      });
+      document.querySelectorAll('.btn-speak-example').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          speak(currentCard.example);
+        });
+      });
+    }
+
     function showCurrentCard() {
       if (sessionIndex >= sessionQueue.length) {
         document.getElementById('study-area').style.display = 'none';
@@ -747,7 +786,7 @@
           <div class="card-label">Перевод</div>
           <div class="card-main">${esc(currentCard.russian)}</div>
           <div class="card-meaning">${esc(currentCard.meaning)}</div>
-          ${currentCard.example ? `<div class="card-example">${esc(currentCard.example)}</div>` : ''}`;
+          ${renderExampleHtml(currentCard.example)}`;
       } else {
         front.innerHTML = `
           <div class="card-label">По-русски</div>
@@ -758,11 +797,10 @@
           <div class="card-label">Английский</div>
           <div class="card-main">${esc(currentCard.english)}</div>
           <button class="btn-speak" id="btn-speak-back" type="button">🔊 Озвучить</button>
-          ${currentCard.example ? `<div class="card-example">${esc(currentCard.example)}</div>` : ''}`;
+          ${renderExampleHtml(currentCard.example)}`;
       }
 
-      document.getElementById('btn-speak-front')?.addEventListener('click', e => { e.stopPropagation(); speak(currentCard.english); });
-      document.getElementById('btn-speak-back')?.addEventListener('click', e => { e.stopPropagation(); speak(currentCard.english); });
+      attachSpeakHandlers();
 
       const left = sessionQueue.length - sessionIndex;
       document.getElementById('session-info').textContent =
