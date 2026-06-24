@@ -572,7 +572,7 @@
   <script src="cards-data.js"></script>
   <script src="card-autofill.js"></script>
   <script>
-    const STORAGE_KEY = 'it-english-data-v3';
+    const STORAGE_KEY = 'it-english-data-v4';
 
     function uid() {
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -620,7 +620,7 @@
 
     function loadData() {
       try {
-        for (const key of ['it-english-data-v3', 'it-english-data-v2', 'it-english-data-v1']) {
+        for (const key of ['it-english-data-v4', 'it-english-data-v3', 'it-english-data-v2', 'it-english-data-v1']) {
           const raw = localStorage.getItem(key);
           if (!raw) continue;
           const data = JSON.parse(raw);

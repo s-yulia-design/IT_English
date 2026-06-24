@@ -18,6 +18,7 @@ function parseDictionaryMd() {
 }
 
 const dict = parseDictionaryMd();
+const UI_CARDS = require('./ui-interface-cards.js');
 
 const ORIGINAL_SEED = [
   { english: "prompt", russian: "запрос, подсказка", meaning: "Текст, который вы пишете ИИ, чтобы он понял, что вам нужно. Чем яснее запрос — тем лучше ответ.", example: "Write a clear prompt.", tags: ["ИИ"] },
@@ -483,11 +484,18 @@ for (const entry of dict) {
     seedMap.set(key, dictToCard(entry));
   }
 }
+for (const card of UI_CARDS) {
+  const key = card.english.toLowerCase();
+  if (!seedMap.has(key)) {
+    seedMap.set(key, enrichCard(card));
+  }
+}
 
 const merged = Array.from(seedMap.values()).map(enrichCard);
 merged.sort((a, b) => a.english.localeCompare(b.english, 'en'));
 
-const out = `// Автоматически сгенерировано из словарь.md + стартовый набор\nconst SEED_CARDS = ${JSON.stringify(merged, null, 2)};\n`;
+const out = `// Сгенерировано: словарь.md + UI Cursor/GitHub/ChatGPT + стартовый набор\nconst SEED_CARDS = ${JSON.stringify(merged, null, 2)};\n`;
 fs.writeFileSync('cards-data.js', out, 'utf8');
 console.log('cards:', merged.length);
-console.log('from dict only:', merged.length - ORIGINAL_SEED.length);
+console.log('from dict:', dict.length);
+console.log('from UI:', UI_CARDS.length);

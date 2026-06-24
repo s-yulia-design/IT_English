@@ -1,5 +1,14 @@
-// Автоматически сгенерировано из словарь.md + стартовый набор
+// Сгенерировано: словарь.md + UI Cursor/GitHub/ChatGPT + стартовый набор
 const SEED_CARDS = [
+  {
+    "english": "Accept",
+    "russian": "принять",
+    "meaning": "Согласиться с предложенным изменением — оставить его в коде.",
+    "example": "Accept the suggested fix.",
+    "tags": [
+      "Cursor"
+    ]
+  },
   {
     "english": "access",
     "russian": "доступ",
@@ -28,6 +37,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Actions",
+    "russian": "автоматизация на GitHub",
+    "meaning": "Автоматические задачи при изменении кода: тесты, сборка, публикация.",
+    "example": "GitHub Actions runs tests on every push.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "admin",
     "russian": "администратор",
     "meaning": "Администратор — человек с полными правами управления системой.",
@@ -43,6 +61,15 @@ const SEED_CARDS = [
     "example": "The AI agent completed the task for you.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "Agent mode",
+    "russian": "режим агента",
+    "meaning": "Режим, где ИИ сам выполняет задачи: ищет файлы, пишет и меняет код.",
+    "example": "Use Agent mode to implement the feature.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -109,12 +136,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Apply",
+    "russian": "применить",
+    "meaning": "Внести предложенные ИИ изменения в файл — принять правки.",
+    "example": "Click Apply to update the file.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "approve",
+    "russian": "одобрить",
+    "meaning": "Согласиться с чужими изменениями — «всё хорошо, можно вливать».",
+    "example": "Approve the pull request.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "archive",
     "russian": "в архив",
     "meaning": "Убрать из активного списка, но не удалять — можно вернуть позже.",
     "example": "Archive old chats.",
     "tags": [
       "сайт"
+    ]
+  },
+  {
+    "english": "artifacts",
+    "russian": "результаты сборки",
+    "meaning": "Файлы, которые создаёт автоматизация — например, готовая программа.",
+    "example": "Download the build artifacts.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -127,12 +181,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Ask mode",
+    "russian": "режим вопросов",
+    "meaning": "Режим, где ИИ только отвечает и советует, но сам не меняет файлы.",
+    "example": "Switch to Ask mode to learn without edits.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "assistant",
     "russian": "ассистент",
     "meaning": "Помощник — ИИ или программа, которая помогает решать задачи и отвечает на вопросы.",
     "example": "The assistant helped me write a letter.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "attach",
+    "russian": "прикрепить",
+    "meaning": "Добавить файл или картинку к сообщению для ИИ.",
+    "example": "Attach a screenshot to your message.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "attach file",
+    "russian": "прикрепить файл",
+    "meaning": "Отправить документ или картинку в чат для анализа ИИ.",
+    "example": "Attach file and ask for a summary.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -172,6 +253,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "background agent",
+    "russian": "фоновый агент",
+    "meaning": "ИИ работает в фоне над задачей, пока вы занимаетесь другим.",
+    "example": "The background agent is still running.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "backup",
     "russian": "резервная копия",
     "meaning": "Резервная копия — запасная копия данных на случай потери.",
@@ -181,12 +271,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "blame",
+    "russian": "кто менял строку",
+    "meaning": "Показать, кто и когда изменил каждую строку файла.",
+    "example": "Use blame to see who edited this line.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "branch",
     "russian": "ветка",
     "meaning": "Отдельная копия проекта для экспериментов — основная версия при этом не ломается.",
     "example": "Create a new branch.",
     "tags": [
       "разработка"
+    ]
+  },
+  {
+    "english": "browse",
+    "russian": "просмотр интернета",
+    "meaning": "ИИ ищет свежую информацию в сети прямо во время ответа.",
+    "example": "Enable browse to get current news.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -208,6 +316,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Bugbot",
+    "russian": "проверка кода ботом",
+    "meaning": "Автоматическая проверка ваших изменений на ошибки, как ревью от робота.",
+    "example": "Bugbot found a possible bug in the PR.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "button",
     "russian": "кнопка",
     "meaning": "Кнопка — элемент на экране, который нажимают для действия.",
@@ -226,6 +343,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "canvas",
+    "russian": "холст для текста",
+    "meaning": "Отдельная область, где ИИ и вы вместе редактируете длинный текст или код.",
+    "example": "Open the answer in canvas to edit it.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "capabilities",
+    "russian": "возможности",
+    "meaning": "Что умеет бот: искать в сети, рисовать, запускать код и т.д.",
+    "example": "Enable web browsing in capabilities.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
     "english": "chart",
     "russian": "диаграмма, график",
     "meaning": "График или диаграмма — наглядное изображение чисел и тенденций.",
@@ -235,12 +370,75 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "chat history",
+    "russian": "история чатов",
+    "meaning": "Список прошлых разговоров с ИИ — можно вернуться к любому.",
+    "example": "Find it in your chat history.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "chatbot",
     "russian": "чат-бот",
     "meaning": "Чат-бот — программа, с которой можно переписываться в чате.",
     "example": "The chatbot answered my question instantly.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "ChatGPT",
+    "russian": "чат с ИИ от OpenAI",
+    "meaning": "Популярный сервис для разговора с искусственным интеллектом в браузере или приложении.",
+    "example": "Ask ChatGPT to explain this term.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "ChatGPT Plus",
+    "russian": "платная подписка Plus",
+    "meaning": "Платный тариф ChatGPT — быстрее, умнее модель и больше возможностей.",
+    "example": "Upgrade to ChatGPT Plus for GPT-4.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "checkpoint",
+    "russian": "точка сохранения",
+    "meaning": "Снимок состояния проекта — можно вернуться, если что-то пошло не так.",
+    "example": "Restore from the last checkpoint.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "checks",
+    "russian": "автопроверки",
+    "meaning": "Результаты автоматических тестов и проверок для ваших изменений.",
+    "example": "All checks passed successfully.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "cherry-pick",
+    "russian": "взять один коммит",
+    "meaning": "Скопировать одно конкретное сохранение из другой ветки.",
+    "example": "Cherry-pick this fix into release.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "CI",
+    "russian": "автоматическая сборка",
+    "meaning": "Система, которая сама проверяет и собирает код при каждом изменении.",
+    "example": "CI failed on the last commit.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -262,12 +460,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "clone",
+    "russian": "клонировать",
+    "meaning": "Скопировать чужой проект с GitHub к себе на компьютер.",
+    "example": "Clone the repository to get started.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "cloud",
     "russian": "облако",
     "meaning": "Облако — хранение и работа с данными через интернет, а не только на своём компьютере.",
     "example": "Your files are saved in the cloud.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "cloud agent",
+    "russian": "облачный агент",
+    "meaning": "ИИ выполняет задачу на сервере Cursor, а не только на вашем компьютере.",
+    "example": "Start a cloud agent for this task.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -289,12 +505,48 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "code interpreter",
+    "russian": "выполнение кода",
+    "meaning": "ИИ может запускать код и работать с файлами — считать, строить графики.",
+    "example": "Use code interpreter to analyze the CSV.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "codebase",
+    "russian": "код проекта",
+    "meaning": "Все файлы вашего проекта вместе — то, что ИИ может читать и понимать.",
+    "example": "Cursor indexes your entire codebase.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "Codespaces",
+    "russian": "облачный редактор",
+    "meaning": "Полноценная среда для кода в браузере — не нужно ничего устанавливать.",
+    "example": "Open the project in Codespaces.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "coding",
     "russian": "программирование",
     "meaning": "Программирование — написание кода для создания программ.",
     "example": "Coding skills are useful in many jobs.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "comment",
+    "russian": "комментарий",
+    "meaning": "Текстовое замечание к строке кода или к обсуждению.",
+    "example": "Leave a comment on line 42.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -307,12 +559,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "compare",
+    "russian": "сравнить версии",
+    "meaning": "Посмотреть разницу между двумя ветками или коммитами.",
+    "example": "Compare main with your branch.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "Composer",
+    "russian": "режим создания",
+    "meaning": "В Cursor — окно, где ИИ пишет и меняет код по вашему запросу, как соавтор программист.",
+    "example": "Open Composer to build a new feature.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "configuration",
     "russian": "настройка системы",
     "meaning": "Настройка, конфигурация — параметры, определяющие, как работает система.",
     "example": "Check the configuration settings.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "conflict",
+    "russian": "конфликт изменений",
+    "meaning": "Когда два человека изменили одно место по-разному — нужно выбрать, какая версия верная.",
+    "example": "Resolve the merge conflict in this file.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -352,6 +631,33 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "continue",
+    "russian": "продолжить",
+    "meaning": "Попросить ИИ дописать оборванный или неполный ответ.",
+    "example": "Click continue to finish the answer.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "contributors",
+    "russian": "участники проекта",
+    "meaning": "Люди, которые вносили код или правки в проект.",
+    "example": "See all contributors on the repo page.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "conversation",
+    "russian": "разговор, беседа",
+    "meaning": "Один чат с ИИ от первого сообщения до последнего.",
+    "example": "Save this conversation for later.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
     "english": "copy",
     "russian": "скопировать",
     "meaning": "Скопировать текст или ссылку в буфер обмена, чтобы вставить в другое место.",
@@ -376,6 +682,24 @@ const SEED_CARDS = [
     "example": "Export the table as a CSV file.",
     "tags": [
       "данные"
+    ]
+  },
+  {
+    "english": "Custom GPT",
+    "russian": "свой настроенный GPT",
+    "meaning": "Ваш личный чат-бот с инструкциями, файлами и особыми навыками.",
+    "example": "Build a Custom GPT for your team.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "DALL-E",
+    "russian": "генератор картинок",
+    "meaning": "ИИ, который создаёт изображения по текстовому описанию.",
+    "example": "Use DALL-E to create an illustration.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -451,6 +775,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Dependabot",
+    "russian": "бот обновлений",
+    "meaning": "Робот GitHub, который предупреждает об устаревших и небезопасных библиотеках.",
+    "example": "Dependabot opened a security update.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "deploy",
     "russian": "запустить, опубликовать",
     "meaning": "Выложить готовый проект в интернет, чтобы им могли пользоваться другие.",
@@ -505,6 +838,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "diff",
+    "russian": "сравнение изменений",
+    "meaning": "Показ разницы: что было в файле и что стало после правки — старое и новое рядом.",
+    "example": "Review the diff before you apply.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "Discussions",
+    "russian": "обсуждения",
+    "meaning": "Раздел для вопросов и разговоров вокруг проекта, не привязанный к коду.",
+    "example": "Ask in Discussions if you need help.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "Docker",
     "russian": "Docker",
     "meaning": "Популярная программа для запуска приложений в контейнерах.",
@@ -532,12 +883,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "draft",
+    "russian": "черновик",
+    "meaning": "Незавершённая версия — видна вам, но ещё не готова к публикации.",
+    "example": "Save the pull request as a draft.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "dropdown",
     "russian": "выпадающий список",
     "meaning": "Меню, которое открывается при нажатии и показывает варианты на выбор.",
     "example": "Select a model from the dropdown.",
     "tags": [
       "сайт"
+    ]
+  },
+  {
+    "english": "edit message",
+    "russian": "изменить сообщение",
+    "meaning": "Поправить свой вопрос и получить новый ответ с учётом правки.",
+    "example": "Edit message and try a clearer prompt.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -613,6 +982,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Explore",
+    "russian": "обзор, каталог",
+    "meaning": "Раздел, где можно найти готовые боты и инструменты.",
+    "example": "Go to Explore to find useful GPTs.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "extension",
+    "russian": "расширение",
+    "meaning": "Дополнение к программе — добавляет новые функции, как приложения на телефоне.",
+    "example": "Install an extension from the marketplace.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "feature",
     "russian": "признак, функция",
     "meaning": "Признак — отдельная характеристика в данных, по которой ИИ делает вывод.",
@@ -637,6 +1024,15 @@ const SEED_CARDS = [
     "example": "We appreciate your feedback.",
     "tags": [
       "продукт"
+    ]
+  },
+  {
+    "english": "fetch",
+    "russian": "проверить обновления",
+    "meaning": "Узнать, есть ли новые изменения на сервере, без слияния с вашим кодом.",
+    "example": "Fetch from origin to see what's new.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -694,12 +1090,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "fork",
+    "russian": "сделать копию проекта",
+    "meaning": "Создать свою копию чужого проекта на GitHub — можно менять отдельно.",
+    "example": "Fork the repo and make your changes.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "form",
     "russian": "форма",
     "meaning": "Форма — блок с полями для ввода данных, например при регистрации.",
     "example": "Fill out the form and submit it.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "format",
+    "russian": "отформатировать",
+    "meaning": "Привести код к аккуратному виду: отступы, переносы строк — автоматически.",
+    "example": "Format the document before saving.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -739,6 +1153,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Gist",
+    "russian": "заметка с кодом",
+    "meaning": "Небольшой фрагмент кода или текста на GitHub — удобно быстро поделиться.",
+    "example": "Share the snippet as a Gist.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "Git",
     "russian": "система контроля версий Git",
     "meaning": "Система контроля версий — программа, которая сохраняет все версии вашего кода.",
@@ -757,12 +1180,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "GPTs",
+    "russian": "готовые боты",
+    "meaning": "Каталог чат-ботов от других пользователей — на разные темы и задачи.",
+    "example": "Explore GPTs in the store.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
     "english": "hallucination",
     "russian": "выдуманный ответ",
     "meaning": "Когда ИИ уверенно пишет то, чего на самом деле нет — выдумывает факты или ссылки.",
     "example": "Watch out for hallucinations.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "history",
+    "russian": "история изменений",
+    "meaning": "Список всех прошлых версий и правок файла или проекта.",
+    "example": "Check the file history for older versions.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "Hooks",
+    "russian": "автоматические действия",
+    "meaning": "Правила, которые срабатывают сами при определённых событиях в редакторе.",
+    "example": "Set up hooks to run checks on save.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -784,6 +1234,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "indexing",
+    "russian": "индексация проекта",
+    "meaning": "Cursor изучает файлы проекта, чтобы быстрее находить нужный код и отвечать точнее.",
+    "example": "Indexing helps the AI understand your project.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "inference",
     "russian": "работа ИИ",
     "meaning": "Момент, когда модель думает и выдаёт ответ. Часто говорят о скорости или стоимости этого процесса.",
@@ -793,12 +1252,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "inline edit",
+    "russian": "правка в строке",
+    "meaning": "Быстрое изменение кода прямо в месте, где стоит курсор, с помощью ИИ.",
+    "example": "Use inline edit to fix this function.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "input",
     "russian": "входные данные",
     "meaning": "Входные данные — то, что вы подаёте на вход программе или ИИ.",
     "example": "Type your input in the text box.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "Insights",
+    "russian": "аналитика репозитория",
+    "meaning": "Статистика проекта: активность, участники, популярность кода.",
+    "example": "Check Insights for contributor activity.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "instructions",
+    "russian": "инструкции для бота",
+    "meaning": "Текст, который задаёт поведение Custom GPT — как он должен отвечать.",
+    "example": "Write clear instructions for your GPT.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -829,6 +1315,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "issue",
+    "russian": "обращение, задача",
+    "meaning": "Запись о проблеме или идее в проекте — баг, вопрос или предложение.",
+    "example": "Open an issue to report the bug.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "iterate",
     "russian": "повторять, дорабатывать",
     "meaning": "Снова и снова улучшать результат — менять запрос и смотреть новый ответ.",
@@ -853,6 +1348,15 @@ const SEED_CARDS = [
     "example": "The data is saved in JSON format.",
     "tags": [
       "данные"
+    ]
+  },
+  {
+    "english": "knowledge",
+    "russian": "база знаний",
+    "meaning": "Файлы, которые вы загружаете в бота — он отвечает на их основе.",
+    "example": "Upload PDFs to the knowledge base.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -910,12 +1414,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "license",
+    "russian": "лицензия",
+    "meaning": "Правила, по которым можно использовать чужой код — можно ли копировать и менять.",
+    "example": "This project is under the MIT license.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "link",
     "russian": "ссылка",
     "meaning": "Ссылка — адрес, по которому можно перейти на другую страницу или файл.",
     "example": "Click the link to open the page.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "lint",
+    "russian": "проверка кода",
+    "meaning": "Автоматическая проверка кода на ошибки и плохие привычки.",
+    "example": "Lint found three warnings in this file.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -973,6 +1495,60 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Marketplace",
+    "russian": "магазин расширений",
+    "meaning": "Каталог приложений и дополнений для GitHub.",
+    "example": "Find tools in the GitHub Marketplace.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "Max mode",
+    "russian": "максимальный режим",
+    "meaning": "Режим с более мощной моделью и большим объёмом памяти для сложных задач.",
+    "example": "Enable Max mode for this large refactor.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "MCP",
+    "russian": "подключение внешних сервисов",
+    "meaning": "Способ подключить к Cursor другие программы и данные — почту, базы, API.",
+    "example": "Configure MCP servers in settings.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "Memories",
+    "russian": "память ИИ",
+    "meaning": "Cursor запоминает ваши предпочтения между сессиями — как личные заметки для ИИ.",
+    "example": "Memories help the AI remember your style.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "memory",
+    "russian": "память чата",
+    "meaning": "ChatGPT запоминает факты о вас между разговорами — имя, предпочтения.",
+    "example": "Memory helps ChatGPT remember your job.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "mention",
+    "russian": "упомянуть",
+    "meaning": "Сослаться на файл или папку в чате через @ — чтобы ИИ их увидел.",
+    "example": "Mention the config file with @.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "menu",
     "russian": "меню",
     "meaning": "Меню — список разделов или действий на сайте.",
@@ -988,6 +1564,15 @@ const SEED_CARDS = [
     "example": "Merge the pull request.",
     "tags": [
       "разработка"
+    ]
+  },
+  {
+    "english": "merge pull request",
+    "russian": "влить изменения",
+    "meaning": "Окончательно добавить проверенные правки в основную ветку проекта.",
+    "example": "Merge pull request when checks pass.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -1054,6 +1639,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "new chat",
+    "russian": "новый чат",
+    "meaning": "Начать разговор с ИИ с чистого листа, без старой переписки.",
+    "example": "Start a new chat for this task.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
+    "english": "Notepad",
+    "russian": "блокнот",
+    "meaning": "В Cursor — место для заметок и черновиков, которые ИИ может использовать.",
+    "example": "Save ideas in a Notepad for later.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "notification",
     "russian": "уведомление",
     "meaning": "Сообщение от сайта или программы — например, что ответ готов или закончилась подписка.",
@@ -1072,6 +1675,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "open source",
+    "russian": "открытый код",
+    "meaning": "Проект, исходный код которого доступен всем — можно смотреть и использовать.",
+    "example": "This is an open source project.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "optimization",
     "russian": "оптимизация",
     "meaning": "Оптимизация — улучшение скорости и эффективности работы.",
@@ -1087,6 +1699,15 @@ const SEED_CARDS = [
     "example": "Check the output before you share it.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "Pages",
+    "russian": "сайт из репозитория",
+    "meaning": "Бесплатный хостинг простого сайта прямо из файлов на GitHub.",
+    "example": "Publish your site with GitHub Pages.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -1126,6 +1747,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "pin chat",
+    "russian": "закрепить чат",
+    "meaning": "Держать важный разговор вверху списка.",
+    "example": "Pin chat so you can find it quickly.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
     "english": "pipeline",
     "russian": "цепочка, цепочка обработки",
     "meaning": "Цепочка шагов обработки — данные проходят через несколько этапов подряд.",
@@ -1135,12 +1765,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Plan mode",
+    "russian": "режим плана",
+    "meaning": "ИИ сначала составляет план действий, вы его смотрите, потом он выполняет.",
+    "example": "Plan mode shows steps before any changes.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "platform",
     "russian": "платформа",
     "meaning": "Платформа — основа, на которой работают другие программы или сервисы.",
     "example": "The platform supports many integrations.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "Playground",
+    "russian": "площадка для тестов",
+    "meaning": "Раздел для разработчиков — пробовать модели и настройки вручную.",
+    "example": "Test the API in the Playground.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "plugins",
+    "russian": "плагины",
+    "meaning": "Дополнения, которые подключают ChatGPT к другим сервисам.",
+    "example": "Enable plugins to book a table.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -1168,6 +1825,15 @@ const SEED_CARDS = [
     "example": "Read our privacy policy.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "Privacy mode",
+    "russian": "режим конфиденциальности",
+    "meaning": "Ваш код не сохраняется на серверах — больше защиты данных.",
+    "example": "Turn on Privacy mode for sensitive projects.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1234,12 +1900,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "pull",
+    "russian": "получить обновления",
+    "meaning": "Скачать последние изменения с сервера в свой проект.",
+    "example": "Pull the latest changes from main.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "pull request",
     "russian": "запрос на слияние",
     "meaning": "Запрос на слияние — предложение добавить свои правки в общий проект.",
     "example": "Open a pull request for review.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "push",
+    "russian": "отправить на сервер",
+    "meaning": "Отправить свои сохранённые изменения на GitHub или другой сервер.",
+    "example": "Push your commits to GitHub.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1261,12 +1945,48 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "rate limit",
+    "russian": "лимит запросов",
+    "meaning": "Ограничение, сколько сообщений можно отправить за определённое время.",
+    "example": "You hit the rate limit. Wait a moment.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "README",
+    "russian": "описание проекта",
+    "meaning": "Главный текст на странице проекта — что это, как установить и пользоваться.",
+    "example": "Read the README before you start.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "rebase",
+    "russian": "перестроить историю",
+    "meaning": "Аккуратно наложить ваши изменения поверх свежей версии проекта.",
+    "example": "Rebase your branch onto main.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "recall",
     "russian": "полнота",
     "meaning": "Полнота — насколько хорошо ИИ находит все нужные случаи.",
     "example": "Recall shows how many cases we found.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "redo",
+    "russian": "повторить",
+    "meaning": "Вернуть отменённое действие — сделать «шаг вперёд» снова.",
+    "example": "Redo the change you just undid.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1306,6 +2026,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "Reject",
+    "russian": "отклонить",
+    "meaning": "Отказаться от предложенного ИИ изменения — не вносить его.",
+    "example": "Reject this change and try again.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "release",
     "russian": "релиз, выпуск",
     "meaning": "Выпуск — публикация новой версии продукта для пользователей.",
@@ -1321,6 +2050,15 @@ const SEED_CARDS = [
     "example": "Remote access is enabled.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "rename chat",
+    "russian": "переименовать чат",
+    "meaning": "Дать разговору понятное название вместо «Новый чат».",
+    "example": "Rename chat to Project Ideas.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -1351,12 +2089,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "request changes",
+    "russian": "запросить правки",
+    "meaning": "При проверке кода попросить автора что-то исправить перед слиянием.",
+    "example": "Request changes before approval.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "requirement",
     "russian": "требование",
     "meaning": "Требование — чёткое описание того, что должна уметь программа.",
     "example": "Read the requirement carefully.",
     "tags": [
       "продукт"
+    ]
+  },
+  {
+    "english": "resolve",
+    "russian": "разрешить, устранить",
+    "meaning": "Исправить конфликт или проблему — выбрать правильный вариант.",
+    "example": "Resolve the conflict and save the file.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1387,6 +2143,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "review",
+    "russian": "проверить код",
+    "meaning": "Посмотреть чужие изменения и оставить замечания или одобрение.",
+    "example": "Please review my changes.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "review changes",
+    "russian": "просмотр изменений",
+    "meaning": "Проверить все правки, которые предложил ИИ, перед тем как сохранить.",
+    "example": "Review changes before accepting them.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "roadmap",
     "russian": "дорожная карта",
     "meaning": "План развития — что и в каком порядке будут добавлять в продукт.",
@@ -1411,6 +2185,15 @@ const SEED_CARDS = [
     "example": "Rollback the deployment.",
     "tags": [
       "разработка"
+    ]
+  },
+  {
+    "english": "rules",
+    "russian": "правила для ИИ",
+    "meaning": "Ваши инструкции для ИИ в проекте — как он должен писать код и отвечать.",
+    "example": "Add rules to guide the AI assistant.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1450,6 +2233,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "secrets",
+    "russian": "секретные ключи",
+    "meaning": "Скрытые пароли и токены для автоматизации — не видны в коде.",
+    "example": "Store the API token in secrets.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "security",
     "russian": "безопасность",
     "meaning": "Безопасность — защита данных и аккаунтов от взлома и кражи.",
@@ -1486,6 +2278,15 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "shared link",
+    "russian": "ссылка на чат",
+    "meaning": "Адрес, по которому другой человек может прочитать ваш разговор.",
+    "example": "Create a shared link for the chat.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
     "english": "sidebar",
     "russian": "боковая панель",
     "meaning": "Меню слева или справа на экране — там обычно список чатов, файлов или разделов.",
@@ -1510,6 +2311,15 @@ const SEED_CARDS = [
     "example": "Sign up for free.",
     "tags": [
       "сайт"
+    ]
+  },
+  {
+    "english": "Skills",
+    "russian": "навыки ИИ",
+    "meaning": "Готовые инструкции для ИИ под конкретные задачи — как шаблоны поведения.",
+    "example": "Add a skill for writing commit messages.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1558,12 +2368,48 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "squash",
+    "russian": "объединить в один коммит",
+    "meaning": "Сжать несколько мелких сохранений в одно — история становится чище.",
+    "example": "Squash the commits before merging.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "star",
+    "russian": "звезда, отметить",
+    "meaning": "Поставить «звёздочку» проекту — как лайк, чтобы не потерять и показать интерес.",
+    "example": "Star this repository if you find it useful.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
+    "english": "stash",
+    "russian": "отложить изменения",
+    "meaning": "Временно убрать незавершённые правки в сторону, чтобы переключиться на другое.",
+    "example": "Stash your changes before switching branches.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "status",
     "russian": "статус",
     "meaning": "Статус — текущее состояние: выполнено, в процессе, ошибка.",
     "example": "The status is shown in green.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "stop generating",
+    "russian": "остановить ответ",
+    "meaning": "Прервать ИИ посередине — если ответ слишком длинный или не туда.",
+    "example": "Click stop generating to cancel.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -1594,12 +2440,39 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "system prompt",
+    "russian": "системная инструкция",
+    "meaning": "Скрытое указание для ИИ, как себя вести — задаётся разработчиком.",
+    "example": "The system prompt sets the assistant tone.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "tab completion",
+    "russian": "подсказка при вводе",
+    "meaning": "ИИ дописывает код за вас по мере набора — как умное автодополнение.",
+    "example": "Tab completion saved me a lot of typing.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "table",
     "russian": "таблица",
     "meaning": "Таблица — данные, расположенные в строках и столбцах.",
     "example": "Data is shown in a table below.",
     "tags": [
       "данные"
+    ]
+  },
+  {
+    "english": "tag",
+    "russian": "метка версии",
+    "meaning": "Именованная отметка в истории — например v1.0 для выпуска.",
+    "example": "Create a tag for this release.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -1621,12 +2494,57 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "temporary chat",
+    "russian": "временный чат",
+    "meaning": "Разговор не сохраняется в истории и не используется для обучения.",
+    "example": "Use temporary chat for private questions.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "terminal",
+    "russian": "терминал",
+    "meaning": "Окно для команд компьютера — можно запускать скрипты, не выходя из редактора.",
+    "example": "Run the command in the terminal.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "testing",
     "russian": "тестирование",
     "meaning": "Тестирование — проверка, что программа работает правильно.",
     "example": "Testing starts before every release.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "thread",
+    "russian": "цепочка сообщений",
+    "meaning": "Последовательность сообщений в одном диалоге — вся переписка целиком.",
+    "example": "The thread contains ten messages.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "thumbs down",
+    "russian": "не нравится",
+    "meaning": "Отметить ответ как плохой — можно объяснить, что не так.",
+    "example": "Thumbs down and explain the problem.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "thumbs up",
+    "russian": "нравится",
+    "meaning": "Отметить ответ как хороший — помогает улучшить сервис.",
+    "example": "Give a thumbs up if the answer helped.",
+    "tags": [
+      "ChatGPT"
     ]
   },
   {
@@ -1699,6 +2617,15 @@ const SEED_CARDS = [
     "example": "The UI is clean and modern.",
     "tags": [
       "дизайн"
+    ]
+  },
+  {
+    "english": "undo",
+    "russian": "отменить",
+    "meaning": "Вернуть последнее действие назад — как «шаг назад».",
+    "example": "Press undo to revert the edit.",
+    "tags": [
+      "Cursor"
     ]
   },
   {
@@ -1801,6 +2728,24 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "voice",
+    "russian": "голосовой режим",
+    "meaning": "Говорить с ИИ вслух и слушать ответы — как по телефону.",
+    "example": "Switch to voice mode on your phone.",
+    "tags": [
+      "ChatGPT"
+    ]
+  },
+  {
+    "english": "watch",
+    "russian": "следить за проектом",
+    "meaning": "Подписаться на обновления репозитория — будут приходить уведомления.",
+    "example": "Watch the repo for new releases.",
+    "tags": [
+      "GitHub"
+    ]
+  },
+  {
     "english": "web page",
     "russian": "веб-страница",
     "meaning": "Веб-страница — одна отдельная страница на сайте.",
@@ -1810,12 +2755,30 @@ const SEED_CARDS = [
     ]
   },
   {
+    "english": "web search",
+    "russian": "поиск в интернете",
+    "meaning": "ИИ ищет актуальную информацию в сети, а не только в вашем проекте.",
+    "example": "Use web search for the latest docs.",
+    "tags": [
+      "Cursor"
+    ]
+  },
+  {
     "english": "website",
     "russian": "сайт",
     "meaning": "Сайт — набор страниц в интернете под одним адресом.",
     "example": "Our website launched last month.",
     "tags": [
       "IT"
+    ]
+  },
+  {
+    "english": "Wiki",
+    "russian": "вики проекта",
+    "meaning": "Страницы с документацией и заметками внутри репозитория.",
+    "example": "Add setup steps to the Wiki.",
+    "tags": [
+      "GitHub"
     ]
   },
   {
@@ -1834,6 +2797,15 @@ const SEED_CARDS = [
     "example": "Automate your workflow.",
     "tags": [
       "ИИ"
+    ]
+  },
+  {
+    "english": "workspace",
+    "russian": "рабочая область",
+    "meaning": "Открытая папка проекта в редакторе — всё, с чем вы сейчас работаете.",
+    "example": "Open the workspace folder in Cursor.",
+    "tags": [
+      "Cursor"
     ]
   }
 ];
