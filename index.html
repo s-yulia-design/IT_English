@@ -403,6 +403,25 @@
       margin-top: 16px;
     }
 
+    .auto-preview {
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.88rem;
+    }
+
+    .auto-preview p {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
+    .auto-preview strong { color: var(--text); }
+    .auto-preview .val { color: var(--accent); }
+
+    .auto-preview.loading { opacity: 0.6; }
+
     .toast {
       position: fixed;
       bottom: 24px;
@@ -487,25 +506,27 @@
     <section id="screen-add" class="screen">
       <div class="panel">
         <h2 style="margin-bottom:4px" id="form-title">Добавить слово</h2>
-        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:12px">Пишите пояснение простыми словами — как для человека без технического опыта</p>
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:12px">
+          Введите слово на английском — перевод, объяснение и пример подставятся автоматически
+        </p>
         <form id="card-form">
           <input type="hidden" id="edit-id">
           <label for="f-english">Слово или фраза на английском *</label>
-          <input id="f-english" required placeholder="например: prompt">
+          <input id="f-english" required placeholder="например: algorithm" autocomplete="off">
 
-          <label for="f-russian">Перевод на русский *</label>
-          <input id="f-russian" required placeholder="например: запрос, подсказка">
+          <label for="f-russian">Уточнить перевод (необязательно)</label>
+          <input id="f-russian" placeholder="оставьте пустым — подставится автоматически">
 
-          <label for="f-meaning">Что это значит простыми словами *</label>
-          <textarea id="f-meaning" required placeholder="Текст, который вы пишете ИИ, чтобы он понял, что вам нужно"></textarea>
+          <div id="auto-preview" class="auto-preview" style="display:none">
+            <p><strong>Перевод:</strong> <span class="val" id="preview-russian">—</span></p>
+            <p><strong>Объяснение:</strong> <span id="preview-meaning">—</span></p>
+            <p><strong>Пример:</strong> <span class="val" id="preview-example">—</span>
+              <button type="button" class="btn-speak btn-speak-sm" id="preview-speak-word" style="margin-left:8px">🔊 Слово</button>
+              <button type="button" class="btn-speak btn-speak-sm" id="preview-speak-example">🔊 Пример</button>
+            </p>
+          </div>
 
-          <label for="f-example">Пример на английском (необязательно)</label>
-          <input id="f-example" placeholder="Write a clear prompt">
-
-          <label for="f-tags">Метка (необязательно)</label>
-          <input id="f-tags" placeholder="ИИ, сайт, настройки">
-
-          <button type="submit" class="btn-primary" id="form-submit">Сохранить</button>
+          <button type="submit" class="btn-primary" id="form-submit">Добавить</button>
           <button type="button" class="btn-secondary" id="form-cancel" style="display:none">Отмена</button>
         </form>
       </div>
@@ -549,8 +570,9 @@
   <div class="toast" id="toast"></div>
 
   <script src="cards-data.js"></script>
+  <script src="card-autofill.js"></script>
   <script>
-    const STORAGE_KEY = 'it-english-data-v2';
+    const STORAGE_KEY = 'it-english-data-v3';
 
     function uid() {
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -568,15 +590,29 @@
       };
     }
 
+    function enrichCardFromSeed(card) {
+      const seed = SEED_CARDS.find(s => s.english.toLowerCase() === card.english.toLowerCase());
+      if (!seed) return card;
+      return {
+        ...card,
+        russian: card.russian || seed.russian,
+        meaning: (!card.meaning || card.meaning.startsWith('Термин из сферы IT')) ? seed.meaning : card.meaning,
+        example: card.example || seed.example,
+        tags: (card.tags && card.tags.length) ? card.tags : (seed.tags || ['IT'])
+      };
+    }
+
     function mergeSeedCards(existingCards) {
       const byKey = new Map();
-      existingCards.forEach(c => byKey.set(c.english.toLowerCase(), c));
+      existingCards.forEach(c => byKey.set(c.english.toLowerCase(), enrichCardFromSeed(c)));
       let added = 0;
       SEED_CARDS.forEach(seed => {
         const key = seed.english.toLowerCase();
         if (!byKey.has(key)) {
           byKey.set(key, seedToCard(seed));
           added++;
+        } else {
+          byKey.set(key, enrichCardFromSeed({ ...byKey.get(key) }));
         }
       });
       return { cards: Array.from(byKey.values()), added };
@@ -584,21 +620,10 @@
 
     function loadData() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
+        for (const key of ['it-english-data-v3', 'it-english-data-v2', 'it-english-data-v1']) {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
           const data = JSON.parse(raw);
-          if (data.cards && data.cards.length) {
-            const merged = mergeSeedCards(data.cards);
-            if (merged.added > 0) {
-              data.cards = merged.cards;
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-            }
-            return data;
-          }
-        }
-        const v1 = localStorage.getItem('it-english-data-v1');
-        if (v1) {
-          const data = JSON.parse(v1);
           if (data.cards && data.cards.length) {
             const merged = mergeSeedCards(data.cards);
             data.cards = merged.cards;
@@ -851,15 +876,78 @@
     });
 
     // --- Add / Edit ---
-    document.getElementById('card-form').addEventListener('submit', e => {
+    let previewData = null;
+    let previewTimer = null;
+
+    async function updatePreview() {
+      const english = document.getElementById('f-english').value.trim();
+      const russianOverride = document.getElementById('f-russian').value.trim();
+      const preview = document.getElementById('auto-preview');
+
+      if (!english) {
+        preview.style.display = 'none';
+        previewData = null;
+        return;
+      }
+
+      preview.style.display = 'block';
+      preview.classList.add('loading');
+      document.getElementById('preview-russian').textContent = '…';
+      document.getElementById('preview-meaning').textContent = '…';
+      document.getElementById('preview-example').textContent = '…';
+
+      previewData = await CardAutofill.buildCardData(english, russianOverride || null);
+      preview.classList.remove('loading');
+
+      if (previewData) {
+        document.getElementById('preview-russian').textContent = previewData.russian;
+        document.getElementById('preview-meaning').textContent = previewData.meaning;
+        document.getElementById('preview-example').textContent = previewData.example;
+      }
+    }
+
+    function schedulePreview() {
+      clearTimeout(previewTimer);
+      previewTimer = setTimeout(updatePreview, 350);
+    }
+
+    document.getElementById('f-english').addEventListener('input', schedulePreview);
+    document.getElementById('f-russian').addEventListener('input', schedulePreview);
+
+    document.getElementById('preview-speak-word').addEventListener('click', () => {
+      const en = document.getElementById('f-english').value.trim();
+      if (en) speak(en);
+    });
+    document.getElementById('preview-speak-example').addEventListener('click', () => {
+      if (previewData?.example) speak(previewData.example);
+    });
+
+    document.getElementById('card-form').addEventListener('submit', async e => {
       e.preventDefault();
       const editId = document.getElementById('edit-id').value;
+      const english = document.getElementById('f-english').value.trim();
+      const russianOverride = document.getElementById('f-russian').value.trim();
+
+      const built = await CardAutofill.buildCardData(english, russianOverride || null);
+      if (!built) {
+        toast('Введите слово на английском');
+        return;
+      }
+
+      const dup = appData.cards.find(c =>
+        c.english.toLowerCase() === built.english.toLowerCase() && c.id !== editId
+      );
+      if (dup) {
+        toast('Такое слово уже есть в словаре');
+        return;
+      }
+
       const card = {
-        english: document.getElementById('f-english').value.trim(),
-        russian: document.getElementById('f-russian').value.trim(),
-        meaning: document.getElementById('f-meaning').value.trim(),
-        example: document.getElementById('f-example').value.trim(),
-        tags: document.getElementById('f-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+        english: built.english,
+        russian: built.russian,
+        meaning: built.meaning,
+        example: built.example,
+        tags: built.tags,
         createdAt: new Date().toISOString()
       };
 
@@ -881,8 +969,10 @@
       document.getElementById('card-form').reset();
       document.getElementById('edit-id').value = '';
       document.getElementById('form-title').textContent = 'Добавить слово';
-      document.getElementById('form-submit').textContent = 'Сохранить';
+      document.getElementById('form-submit').textContent = 'Добавить';
       document.getElementById('form-cancel').style.display = 'none';
+      document.getElementById('auto-preview').style.display = 'none';
+      previewData = null;
     }
 
     function editCard(id) {
@@ -891,13 +981,11 @@
       document.getElementById('edit-id').value = card.id;
       document.getElementById('f-english').value = card.english;
       document.getElementById('f-russian').value = card.russian;
-      document.getElementById('f-meaning').value = card.meaning;
-      document.getElementById('f-example').value = card.example || '';
-      document.getElementById('f-tags').value = (card.tags || []).join(', ');
       document.getElementById('form-title').textContent = 'Редактировать слово';
-      document.getElementById('form-submit').textContent = 'Обновить';
+      document.getElementById('form-submit').textContent = 'Сохранить';
       document.getElementById('form-cancel').style.display = 'inline-block';
       document.querySelector('[data-screen="add"]').click();
+      updatePreview();
     }
 
     function deleteCard(id) {

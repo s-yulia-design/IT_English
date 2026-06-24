@@ -1,6 +1,23 @@
 const fs = require('fs');
 
-const dict = JSON.parse(fs.readFileSync('dict-parsed.json', 'utf8'));
+function parseDictionaryMd() {
+  const text = fs.readFileSync('словарь.md', 'utf8');
+  const entries = [];
+  for (const line of text.split('\n')) {
+    const m = line.match(/`([^`]+)`/);
+    if (!m) continue;
+    const inner = m[1];
+    if (!inner.includes(';') || inner.startsWith('English')) continue;
+    const parts = inner.split(';');
+    const english = parts[0]?.trim();
+    const russian = parts[1]?.trim();
+    const category = (parts[2] || 'IT').trim();
+    if (english && russian) entries.push({ english, russian, category });
+  }
+  return entries;
+}
+
+const dict = parseDictionaryMd();
 
 const ORIGINAL_SEED = [
   { english: "prompt", russian: "запрос, подсказка", meaning: "Текст, который вы пишете ИИ, чтобы он понял, что вам нужно. Чем яснее запрос — тем лучше ответ.", example: "Write a clear prompt.", tags: ["ИИ"] },
@@ -247,22 +264,218 @@ function catToTag(category) {
   return ["IT"];
 }
 
+function capitalize(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+const EXAMPLE_OVERRIDES = {
+  "algorithm": "This algorithm sorts the list quickly.",
+  "artificial intelligence": "Artificial intelligence is changing how we work.",
+  "ai": "AI can help you write emails faster.",
+  "machine learning": "Machine learning improves with more data.",
+  "deep learning": "Deep learning powers modern image recognition.",
+  "neural network": "A neural network learns from examples.",
+  "language model": "The language model understands your question.",
+  "large language model": "A large language model can write long texts.",
+  "llm": "This LLM answers in natural language.",
+  "prompt engineering": "Good prompt engineering gives better results.",
+  "embedding": "The embedding captures the meaning of a word.",
+  "vector": "Each word is stored as a vector.",
+  "dataset": "We need a larger dataset for training.",
+  "data": "Your data is stored securely.",
+  "training": "Model training takes several hours.",
+  "train": "Train the model on your documents.",
+  "fine-tuning": "Fine-tuning adapts the model to your needs.",
+  "prediction": "The prediction was surprisingly accurate.",
+  "classification": "Classification separates spam from normal mail.",
+  "regression": "Regression predicts the price tomorrow.",
+  "clustering": "Clustering groups similar customers together.",
+  "accuracy": "The accuracy of the model is 95%.",
+  "precision": "High precision means fewer false alarms.",
+  "recall": "Recall shows how many cases we found.",
+  "loss": "The loss decreased after each training round.",
+  "feature": "Each feature describes one property of the data.",
+  "label": "Add a label to each training example.",
+  "input": "Type your input in the text box.",
+  "output": "Check the output before you share it.",
+  "automation": "Automation saves time on routine tasks.",
+  "agent": "The AI agent completed the task for you.",
+  "chatbot": "The chatbot answered my question instantly.",
+  "assistant": "The assistant helped me write a letter.",
+  "pipeline": "The pipeline processes data step by step.",
+  "interface": "The interface is simple and clear.",
+  "database": "All users are stored in the database.",
+  "sql": "Write an SQL query to find the data.",
+  "query": "Enter your query and press Search.",
+  "server": "The server is running smoothly.",
+  "client": "The client connects to the server.",
+  "cloud": "Your files are saved in the cloud.",
+  "hosting": "We bought hosting for our website.",
+  "deployment": "Deployment finished without errors.",
+  "frontend": "The frontend shows buttons and menus.",
+  "backend": "The backend handles data and logic.",
+  "full-stack": "She works as a full-stack developer.",
+  "framework": "This framework speeds up development.",
+  "library": "Import the library into your project.",
+  "repository": "Push your code to the repository.",
+  "git": "Use Git to track your changes.",
+  "github": "The project is hosted on GitHub.",
+  "pull request": "Open a pull request for review.",
+  "bug": "We found a bug in the login form.",
+  "debugging": "Debugging took most of the afternoon.",
+  "error": "An error occurred. Please try again.",
+  "exception": "The program threw an exception.",
+  "log": "Check the log for more details.",
+  "testing": "Testing starts before every release.",
+  "unit test": "Each unit test checks one small part.",
+  "version": "Update to the latest version.",
+  "update": "Install the update when you are ready.",
+  "software": "This software runs on Windows and Mac.",
+  "application": "Download the application from the store.",
+  "app": "Open the app on your phone.",
+  "platform": "The platform supports many integrations.",
+  "tool": "This tool helps you edit images.",
+  "analytics": "Analytics shows how users behave.",
+  "metrics": "Track the key metrics every week.",
+  "report": "Generate a report for the manager.",
+  "visualization": "The visualization makes trends clear.",
+  "chart": "The chart shows sales by month.",
+  "table": "Data is shown in a table below.",
+  "spreadsheet": "Open the spreadsheet and fill in the numbers.",
+  "file": "Save the file to your computer.",
+  "folder": "Create a new folder for your photos.",
+  "link": "Click the link to open the page.",
+  "url": "Copy the URL and send it to a colleague.",
+  "browser": "Open the site in your browser.",
+  "website": "Our website launched last month.",
+  "web page": "This web page loads very fast.",
+  "landing page": "The landing page explains our product.",
+  "domain": "We bought a new domain name.",
+  "security": "Security is our top priority.",
+  "authentication": "Authentication failed. Check your password.",
+  "authorization": "You need authorization to access this page.",
+  "password": "Choose a strong password.",
+  "encryption": "Encryption protects your messages.",
+  "privacy": "Read our privacy policy.",
+  "permission": "The app asks for camera permission.",
+  "access": "You do not have access to this file.",
+  "user": "The user signed in successfully.",
+  "admin": "Contact the admin for help.",
+  "role": "Your role defines what you can do.",
+  "account": "Create an account to get started.",
+  "profile": "Update your profile photo.",
+  "message": "You have a new message.",
+  "email": "Check your email for the confirmation.",
+  "sort": "Sort the list by date.",
+  "button": "Press the button to continue.",
+  "form": "Fill out the form and submit it.",
+  "field": "This field is required.",
+  "menu": "Open the menu in the top corner.",
+  "screen": "The next screen shows your results.",
+  "layout": "The layout looks good on mobile.",
+  "design": "We improved the design of the app.",
+  "ux": "Good UX makes users happy.",
+  "ui": "The UI is clean and modern.",
+  "prototype": "We built a prototype in one week.",
+  "wireframe": "The wireframe shows the page structure.",
+  "responsive": "The site is responsive on all devices.",
+  "mobile": "Use the mobile app on the go.",
+  "desktop": "The desktop version has more features.",
+  "device": "This device is not supported.",
+  "network": "The network connection is unstable.",
+  "internet": "You need internet to use this service.",
+  "connection": "The connection was lost. Reconnecting...",
+  "request": "Your request has been sent.",
+  "response": "The response arrived in two seconds.",
+  "status": "The status is shown in green.",
+  "cache": "Clear the cache if the page looks old.",
+  "performance": "Performance improved after the update.",
+  "optimization": "Optimization reduced loading time.",
+  "scalability": "Scalability matters for growing apps.",
+  "backup": "Make a backup before you update.",
+  "restore": "Restore the file from backup.",
+  "configuration": "Check the configuration settings.",
+  "environment": "This environment is for testing only.",
+  "local": "Files are stored on your local computer.",
+  "remote": "Remote access is enabled.",
+  "virtual machine": "Run the app in a virtual machine.",
+  "container": "The app runs inside a container.",
+  "docker": "We use Docker to deploy the service.",
+  "api key": "Keep your API key secret.",
+  "json": "The data is saved in JSON format.",
+  "csv": "Export the table as a CSV file.",
+  "html": "HTML defines the structure of a page.",
+  "css": "CSS controls colors and fonts.",
+  "javascript": "JavaScript makes the page interactive.",
+  "python": "Python is popular for AI projects.",
+  "code": "Review the code before you publish.",
+  "coding": "Coding skills are useful in many jobs.",
+  "developer": "The developer fixed the issue quickly.",
+  "programmer": "A programmer writes instructions for computers.",
+  "engineer": "The engineer designed the system.",
+  "product manager": "The product manager planned the release.",
+  "project": "The project starts next Monday.",
+  "task": "Complete this task by Friday.",
+  "feature request": "Send us your feature request.",
+  "requirement": "Read the requirement carefully.",
+  "specification": "The specification describes all features.",
+  "mvp": "We launched an MVP in three months.",
+  "roadmap": "The roadmap shows plans for next year.",
+  "release": "The new release is available now.",
+  "feedback": "We appreciate your feedback."
+};
+
+function generateExample(english, tags) {
+  const key = english.toLowerCase();
+  if (EXAMPLE_OVERRIDES[key]) return EXAMPLE_OVERRIDES[key];
+
+  const verbs = new Set([
+    'upload', 'download', 'search', 'filter', 'share', 'copy', 'paste', 'delete',
+    'merge', 'commit', 'deploy', 'debug', 'train', 'summarize', 'translate',
+    'refine', 'generate', 'regenerate', 'toggle', 'scroll', 'archive', 'sync',
+    'update', 'upgrade', 'restore', 'backup', 'connect', 'install', 'configure',
+    'authenticate', 'authorize', 'encrypt', 'iterate', 'refine', 'summarize'
+  ]);
+
+  const low = key;
+  const first = low.split(' ')[0];
+  if (verbs.has(first) || verbs.has(low)) {
+    return capitalize(english) + '.';
+  }
+  if (low.startsWith('sign ')) return capitalize(english) + ' to continue.';
+  if (low === 'log out') return 'Log out when you finish work.';
+  if (low.includes(' ')) return `Learn how to use ${english} in IT.`;
+  if (tags.includes('ИИ')) return `The ${low} is common in AI tools.`;
+  return `Open the ${low} in the settings.`;
+}
+
+function enrichCard(card) {
+  const key = card.english.toLowerCase();
+  const russian = card.russian || RUSSIAN_SIMPLE[key] || card.russian;
+  let meaning = card.meaning;
+  if (!meaning || meaning.startsWith('Термин из сферы IT:')) {
+    meaning = MEANINGS[key] || meaning || `Слово «${card.english}» в IT означает: ${russian}.`;
+  }
+  const example = card.example || generateExample(card.english, card.tags || []);
+  return { ...card, russian, meaning, example };
+}
+
 function dictToCard(entry) {
   const key = entry.english.toLowerCase();
   const russian = RUSSIAN_SIMPLE[key] || entry.russian.replace(/промпт/gi, "запрос").replace(/дашборд/gi, "панель").replace(/токен/gi, "единица текста").replace(/эмбеддинг/gi, "числовое представление").replace(/пайплайн/gi, "цепочка").replace(/фронтенд/gi, "внешняя часть").replace(/бэкенд/gi, "внутренняя часть").replace(/коммит/gi, "сохранение").replace(/аутентификация/gi, "проверка личности").replace(/авторизация/gi, "проверка прав");
   const meaning = MEANINGS[key] || `Термин из сферы IT: ${russian}.`;
-  return {
+  return enrichCard({
     english: entry.english,
     russian,
     meaning,
-    example: "",
+    example: '',
     tags: catToTag(entry.category)
-  };
+  });
 }
 
 const seedMap = new Map();
 for (const card of ORIGINAL_SEED) {
-  seedMap.set(card.english.toLowerCase(), card);
+  seedMap.set(card.english.toLowerCase(), enrichCard(card));
 }
 for (const entry of dict) {
   const key = entry.english.toLowerCase();
@@ -271,7 +484,7 @@ for (const entry of dict) {
   }
 }
 
-const merged = Array.from(seedMap.values());
+const merged = Array.from(seedMap.values()).map(enrichCard);
 merged.sort((a, b) => a.english.localeCompare(b.english, 'en'));
 
 const out = `// Автоматически сгенерировано из словарь.md + стартовый набор\nconst SEED_CARDS = ${JSON.stringify(merged, null, 2)};\n`;
