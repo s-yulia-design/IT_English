@@ -450,6 +450,130 @@ function generateExample(english, tags) {
   return `Open the ${low} in the settings.`;
 }
 
+function ruWord(card) {
+  return (card.russian || '').split(',')[0].trim();
+}
+
+function generateExampleRu(card) {
+  const key = card.english.toLowerCase();
+  if (card.exampleRu) return card.exampleRu;
+  if (EXAMPLE_RU[key]) return EXAMPLE_RU[key];
+  const ex = (card.example || '').trim();
+  if (!ex) return '';
+  const ru = ruWord(card);
+
+  const rules = [
+    [/^open the /i, `Откройте «${ru}».`],
+    [/^open /i, `Откройте ${ru}.`],
+    [/^click /i, `Нажмите «${ru}».`],
+    [/^press /i, `Нажмите «${ru}».`],
+    [/^use /i, `Используйте «${ru}».`],
+    [/^check /i, `Проверьте ${ru}.`],
+    [/^enable /i, `Включите «${ru}».`],
+    [/^turn on /i, `Включите «${ru}».`],
+    [/^switch to /i, `Переключитесь на «${ru}».`],
+    [/^start /i, `Начните: ${ru}.`],
+    [/^find /i, `Найдите в ${ru}.`],
+    [/^save /i, `Сохраните ${ru}.`],
+    [/^create /i, `Создайте ${ru}.`],
+    [/^add /i, `Добавьте ${ru}.`],
+    [/^go to /i, `Перейдите в ${ru}.`],
+    [/^learn how to use /i, `Узнайте, как использовать «${ru}» в IT.`],
+    [/^the .+ is common in ai tools/i, `«${ru}» часто встречается в ИИ-инструментах.`],
+    [/^review /i, `Просмотрите ${ru} перед сохранением.`],
+    [/^merge /i, `Объедините изменения.`],
+    [/^push /i, `Отправьте изменения на сервер.`],
+    [/^pull /i, `Получите последние обновления.`],
+    [/^upload /i, `Загрузите файл на сайт.`],
+    [/^download /i, `Скачайте файл на компьютер.`],
+    [/^sign in/i, `Войдите, чтобы продолжить.`],
+    [/^sign up/i, `Зарегистрируйтесь бесплатно.`],
+    [/^log out/i, `Выйдите, когда закончите работу.`],
+    [/^write /i, `Напишите ${ru}.`],
+    [/^choose /i, `Выберите ${ru}.`],
+    [/^select /i, `Выберите ${ru}.`],
+    [/^install /i, `Установите ${ru}.`],
+    [/^manage /i, `Управляйте ${ru}.`],
+    [/^complete /i, `Завершите ${ru}.`],
+    [/^attach /i, `Прикрепите файл к сообщению.`],
+    [/^explore /i, `Откройте каталог и найдите нужное.`],
+    [/^give /i, `Оцените ответ.`],
+    [/^rename /i, `Переименуйте чат.`],
+    [/^pin /i, `Закрепите чат вверху списка.`],
+  ];
+  for (const [re, text] of rules) {
+    if (re.test(ex)) return text;
+  }
+  if (/^[A-Z][a-z]+(\s+[a-z]+){0,3}\.$/.test(ex)) {
+    const verb = ex.replace(/\.$/, '');
+    return `${verb} — по-русски: «${ru}».`;
+  }
+  const m = (card.meaning || '').split(/[.!]/)[0].trim();
+  return m ? m + '.' : `Пример: «${ru}».`;
+}
+
+const EXAMPLE_RU = {
+  "prompt": "Напишите понятный запрос к ИИ.",
+  "generate": "Нажмите Generate, чтобы создать новую картинку.",
+  "regenerate": "Переделайте ответ, если он не подошёл.",
+  "settings": "Откройте настройки, чтобы сменить язык.",
+  "dashboard": "Перейдите на главную панель.",
+  "sign in": "Войдите, чтобы продолжить.",
+  "sign up": "Зарегистрируйтесь бесплатно.",
+  "log out": "Выйдите, когда закончите работу.",
+  "subscription": "Управляйте своей подпиской.",
+  "upgrade": "Перейдите на тариф Pro.",
+  "notification": "У вас новое уведомление.",
+  "toggle": "Включите тёмную тему.",
+  "dropdown": "Выберите модель из выпадающего списка.",
+  "sidebar": "Откройте боковую панель.",
+  "tooltip": "Наведите курсор, чтобы увидеть подсказку.",
+  "scroll": "Прокрутите вниз, чтобы прочитать дальше.",
+  "upload": "Загрузите PDF-файл.",
+  "download": "Скачайте отчёт.",
+  "copy": "Скопируйте ответ.",
+  "paste": "Вставьте текст сюда.",
+  "search": "Найдите нужный чат.",
+  "filter": "Отфильтруйте по дате.",
+  "share": "Поделитесь этим чатом.",
+  "delete": "Удалите этот разговор.",
+  "archive": "Отправьте старые чаты в архив.",
+  "summarize": "Кратко перескажите эту статью.",
+  "translate": "Переведите на русский.",
+  "refine": "Улучшите черновик.",
+  "iterate": "Давайте доработаем эту идею.",
+  "context": "Модель потеряла контекст переписки.",
+  "context window": "Этот чат превысил объём памяти.",
+  "token": "Этот запрос использует много единиц текста.",
+  "model": "Выберите модель ИИ.",
+  "temperature": "Понизьте креативность для точности.",
+  "hallucination": "Остерегайтесь выдуманных ответов.",
+  "fine-tune": "Дообучите модель на своих данных.",
+  "inference": "ИИ сейчас обрабатывает запрос.",
+  "workflow": "Автоматизируйте свой рабочий процесс.",
+  "integration": "Настройте подключение к другому сервису.",
+  "sync": "Синхронизируйте данные между устройствами.",
+  "deploy": "Опубликуйте сайт в интернете.",
+  "debug": "Найдите и исправьте ошибку в коде.",
+  "api": "Подключитесь через API.",
+  "endpoint": "Отправьте запрос на точку входа чата.",
+  "commit": "Сохраните свои изменения.",
+  "merge": "Объедините запрос на слияние.",
+  "branch": "Создайте новую ветку.",
+  "refactor": "Улучшите структуру этого модуля.",
+  "rollback": "Откатите развёртывание назад.",
+  "onboarding": "Пройдите знакомство с сервисом.",
+  "composer": "Откройте Composer, чтобы создать новую функцию.",
+  "apply": "Нажмите Apply, чтобы обновить файл.",
+  "accept": "Примите предложенное исправление.",
+  "reject": "Отклоните это изменение и попробуйте снова.",
+  "diff": "Просмотрите изменения перед применением.",
+  "chatgpt": "Спросите ChatGPT, что означает этот термин.",
+  "stop generating": "Нажмите «Остановить», чтобы прервать ответ.",
+  "fork": "Сделайте форк репозитория и внесите правки.",
+  "pull request": "Откройте запрос на слияние для проверки."
+};
+
 function enrichCard(card) {
   const key = card.english.toLowerCase();
   const russian = card.russian || RUSSIAN_SIMPLE[key] || card.russian;
@@ -458,7 +582,9 @@ function enrichCard(card) {
     meaning = MEANINGS[key] || meaning || `Слово «${card.english}» в IT означает: ${russian}.`;
   }
   const example = card.example || generateExample(card.english, card.tags || []);
-  return { ...card, russian, meaning, example };
+  const enriched = { ...card, russian, meaning, example };
+  const exampleRu = generateExampleRu(enriched);
+  return { ...enriched, exampleRu };
 }
 
 function dictToCard(entry) {

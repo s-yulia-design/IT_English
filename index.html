@@ -420,7 +420,77 @@
     .auto-preview strong { color: var(--text); }
     .auto-preview .val { color: var(--accent); }
 
-    .auto-preview.loading { opacity: 0.6; }
+    .card-example-ru {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 6px;
+      max-width: 420px;
+    }
+
+    .session-list {
+      list-style: none;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+
+    .session-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .session-item:last-child { border-bottom: none; }
+
+    .session-bar {
+      height: 4px;
+      background: var(--bg);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .session-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .session-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .session-header h2 {
+      font-size: 1rem;
+      flex: 1;
+      margin: 0;
+    }
+
+    .btn-back {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .btn-back:hover { background: var(--border); }
 
     .toast {
       position: fixed;
@@ -466,14 +536,23 @@
 
     <!-- Учёба -->
     <section id="screen-study" class="screen active">
-      <div class="panel">
+      <div id="session-picker" class="panel">
+        <h2 style="margin-bottom:4px">Сессии учёбы</h2>
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px">По 50 карточек в каждой сессии. Выберите любую — можно возвращаться и повторять.</p>
+        <ul class="session-list" id="sessions-list"></ul>
+      </div>
+
+      <div id="session-active" class="panel" style="display:none">
+        <div class="session-header">
+          <button type="button" class="btn-back" id="btn-back-sessions">← К сессиям</button>
+          <h2 id="session-title">Сессия</h2>
+        </div>
         <div class="study-controls">
           <select id="direction">
             <option value="en-ru">Английский → Русский</option>
             <option value="ru-en">Русский → Английский</option>
             <option value="mixed">Смешанный режим</option>
           </select>
-          <button id="btn-new-session">Новая сессия</button>
         </div>
         <div class="session-info" id="session-info">Загрузка...</div>
 
@@ -495,7 +574,8 @@
         <div id="study-done" class="study-done" style="display:none">
           <h2>Сессия завершена!</h2>
           <p>Отличная работа. Сложные слова будут показаны чаще.</p>
-          <button class="btn-primary" id="btn-restart">Начать снова</button>
+          <button class="btn-primary" id="btn-restart">Пройти снова</button>
+          <button class="btn-secondary" id="btn-to-sessions">К списку сессий</button>
         </div>
 
         <p class="hotkeys">Пробел — перевернуть &nbsp;|&nbsp; S — озвучить &nbsp;|&nbsp; 1–4 — оценка</p>
@@ -520,8 +600,10 @@
           <div id="auto-preview" class="auto-preview" style="display:none">
             <p><strong>Перевод:</strong> <span class="val" id="preview-russian">—</span></p>
             <p><strong>Объяснение:</strong> <span id="preview-meaning">—</span></p>
-            <p><strong>Пример:</strong> <span class="val" id="preview-example">—</span>
-              <button type="button" class="btn-speak btn-speak-sm" id="preview-speak-word" style="margin-left:8px">🔊 Слово</button>
+            <p><strong>Пример:</strong> <span class="val" id="preview-example">—</span></p>
+            <p id="preview-example-ru-wrap" style="display:none"><strong>Перевод примера:</strong> <span id="preview-example-ru">—</span></p>
+            <p>
+              <button type="button" class="btn-speak btn-speak-sm" id="preview-speak-word">🔊 Слово</button>
               <button type="button" class="btn-speak btn-speak-sm" id="preview-speak-example">🔊 Пример</button>
             </p>
           </div>
@@ -572,7 +654,8 @@
   <script src="cards-data.js"></script>
   <script src="card-autofill.js"></script>
   <script>
-    const STORAGE_KEY = 'it-english-data-v4';
+    const STORAGE_KEY = 'it-english-data-v5';
+    const SESSION_SIZE = 50;
 
     function uid() {
       return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -585,6 +668,7 @@
         russian: c.russian,
         meaning: c.meaning,
         example: c.example || '',
+        exampleRu: c.exampleRu || '',
         tags: c.tags || [],
         createdAt: new Date().toISOString()
       };
@@ -598,6 +682,7 @@
         russian: card.russian || seed.russian,
         meaning: (!card.meaning || card.meaning.startsWith('Термин из сферы IT')) ? seed.meaning : card.meaning,
         example: card.example || seed.example,
+        exampleRu: card.exampleRu || seed.exampleRu || '',
         tags: (card.tags && card.tags.length) ? card.tags : (seed.tags || ['IT'])
       };
     }
@@ -620,7 +705,7 @@
 
     function loadData() {
       try {
-        for (const key of ['it-english-data-v4', 'it-english-data-v3', 'it-english-data-v2', 'it-english-data-v1']) {
+        for (const key of ['it-english-data-v5', 'it-english-data-v4', 'it-english-data-v3', 'it-english-data-v2', 'it-english-data-v1']) {
           const raw = localStorage.getItem(key);
           if (!raw) continue;
           const data = JSON.parse(raw);
@@ -662,9 +747,9 @@
       return new Date(p.nextReview) <= new Date();
     }
 
-    function buildQueue() {
-      const cards = [...appData.cards];
-      cards.sort((a, b) => {
+    function buildQueue(cards) {
+      const list = [...cards];
+      list.sort((a, b) => {
         const pa = getProgress(a.id);
         const pb = getProgress(b.id);
         const dueA = isDue(a.id) ? 0 : 1;
@@ -674,8 +759,48 @@
         if (pa.ease !== pb.ease) return pa.ease - pb.ease;
         return 0;
       });
-      return cards.slice(0, Math.min(20, cards.length));
+      return list;
     }
+
+    function getSortedCards() {
+      return [...appData.cards].sort((a, b) =>
+        a.english.localeCompare(b.english, 'en', { sensitivity: 'base' }));
+    }
+
+    function getSessionGroups() {
+      const sorted = getSortedCards();
+      const groups = [];
+      for (let i = 0; i < sorted.length; i += SESSION_SIZE) {
+        const cards = sorted.slice(i, i + SESSION_SIZE);
+        groups.push({
+          id: groups.length,
+          cards,
+          from: i + 1,
+          to: i + cards.length,
+          title: `Сессия ${groups.length + 1}`
+        });
+      }
+      return groups;
+    }
+
+    function getSessionProgress(sessionId) {
+      if (!appData.sessionProgress) appData.sessionProgress = {};
+      return appData.sessionProgress[sessionId] || { completed: 0, total: 0, finished: false };
+    }
+
+    function saveSessionProgress(sessionId, data) {
+      if (!appData.sessionProgress) appData.sessionProgress = {};
+      appData.sessionProgress[sessionId] = { ...getSessionProgress(sessionId), ...data };
+      saveData();
+    }
+
+    // --- Study session ---
+    let sessionQueue = [];
+    let sessionIndex = 0;
+    let currentDirection = 'en-ru';
+    let cardFlipped = false;
+    let currentCard = null;
+    let currentSessionId = null;
 
     function rateCard(cardId, grade) {
       const p = { ...getProgress(cardId) };
@@ -717,13 +842,6 @@
       return d;
     }
 
-    // --- Study session ---
-    let sessionQueue = [];
-    let sessionIndex = 0;
-    let currentDirection = 'en-ru';
-    let cardFlipped = false;
-    let currentCard = null;
-
     function getDirection() {
       const sel = document.getElementById('direction').value;
       if (sel === 'mixed') {
@@ -732,20 +850,63 @@
       return sel;
     }
 
-    function startSession() {
-      sessionQueue = buildQueue();
+    function renderSessionList() {
+      const groups = getSessionGroups();
+      const list = document.getElementById('sessions-list');
+      list.innerHTML = groups.map(g => {
+        const prog = getSessionProgress(g.id);
+        const total = g.cards.length;
+        const done = prog.finished ? total : Math.min(prog.completed || 0, total);
+        const pct = total ? Math.round((done / total) * 100) : 0;
+        let status = 'Не начата';
+        if (prog.finished) status = '✓ Пройдена';
+        else if (done > 0) status = `В процессе (${done}/${total})`;
+        const btnLabel = prog.finished ? 'Повторить' : (done > 0 ? 'Продолжить' : 'Начать');
+        return `<li class="session-item">
+          <div style="flex:1">
+            <strong>${g.title}</strong>
+            <span class="tag">слова ${g.from}–${g.to}</span>
+            <div class="meta">${status} · ${total} карточек</div>
+            <div class="session-bar"><div class="session-bar-fill" style="width:${pct}%"></div></div>
+          </div>
+          <button class="btn-primary btn-sm" onclick="startSessionById(${g.id})">${btnLabel}</button>
+        </li>`;
+      }).join('');
+    }
+
+    function showSessionPicker() {
+      document.getElementById('session-picker').style.display = 'block';
+      document.getElementById('session-active').style.display = 'none';
+      renderSessionList();
+    }
+
+    function showActiveSession() {
+      document.getElementById('session-picker').style.display = 'none';
+      document.getElementById('session-active').style.display = 'block';
+    }
+
+    function startSessionById(sessionId) {
+      const group = getSessionGroups()[sessionId];
+      if (!group) return;
+      currentSessionId = sessionId;
+      sessionQueue = buildQueue(group.cards);
       sessionIndex = 0;
       cardFlipped = false;
+      showActiveSession();
       document.getElementById('study-area').style.display = 'block';
       document.getElementById('study-done').style.display = 'none';
+      document.getElementById('session-title').textContent =
+        `${group.title} · слова ${group.from}–${group.to}`;
+      saveSessionProgress(sessionId, { total: group.cards.length });
       showCurrentCard();
     }
 
-    function renderExampleHtml(example) {
+    function renderExampleHtml(example, exampleRu) {
       if (!example) return '';
       return `
         <div class="card-example-wrap">
           <div class="card-example">${esc(example)}</div>
+          ${exampleRu ? `<div class="card-example-ru">${esc(exampleRu)}</div>` : ''}
           <button class="btn-speak btn-speak-sm btn-speak-example" type="button">🔊 Озвучить пример</button>
         </div>`;
     }
@@ -769,6 +930,14 @@
 
     function showCurrentCard() {
       if (sessionIndex >= sessionQueue.length) {
+        if (currentSessionId !== null) {
+          saveSessionProgress(currentSessionId, {
+            completed: sessionQueue.length,
+            total: sessionQueue.length,
+            finished: true,
+            lastRun: new Date().toISOString()
+          });
+        }
         document.getElementById('study-area').style.display = 'none';
         document.getElementById('study-done').style.display = 'block';
         return;
@@ -796,7 +965,7 @@
           <div class="card-label">Перевод</div>
           <div class="card-main">${esc(currentCard.russian)}</div>
           <div class="card-meaning">${esc(currentCard.meaning)}</div>
-          ${renderExampleHtml(currentCard.example)}`;
+          ${renderExampleHtml(currentCard.example, currentCard.exampleRu)}`;
       } else {
         front.innerHTML = `
           <div class="card-label">По-русски</div>
@@ -807,7 +976,7 @@
           <div class="card-label">Английский</div>
           <div class="card-main">${esc(currentCard.english)}</div>
           <button class="btn-speak" id="btn-speak-back" type="button">🔊 Озвучить</button>
-          ${renderExampleHtml(currentCard.example)}`;
+          ${renderExampleHtml(currentCard.example, currentCard.exampleRu)}`;
       }
 
       attachSpeakHandlers();
@@ -831,6 +1000,14 @@
         sessionQueue.push(currentCard);
       }
       sessionIndex++;
+      if (currentSessionId !== null) {
+        const group = getSessionGroups()[currentSessionId];
+        saveSessionProgress(currentSessionId, {
+          completed: Math.min(sessionIndex, group ? group.cards.length : sessionIndex),
+          total: group ? group.cards.length : sessionQueue.length,
+          finished: false
+        });
+      }
       showCurrentCard();
     }
 
@@ -855,6 +1032,7 @@
         document.getElementById('screen-' + btn.dataset.screen).classList.add('active');
         if (btn.dataset.screen === 'dict') renderDict();
         if (btn.dataset.screen === 'stats') renderStats();
+        if (btn.dataset.screen === 'study') showSessionPicker();
       });
     });
 
@@ -868,8 +1046,11 @@
       if (btn) answerCard(Number(btn.dataset.grade));
     });
 
-    document.getElementById('btn-new-session').addEventListener('click', startSession);
-    document.getElementById('btn-restart').addEventListener('click', startSession);
+    document.getElementById('btn-back-sessions').addEventListener('click', showSessionPicker);
+    document.getElementById('btn-to-sessions').addEventListener('click', showSessionPicker);
+    document.getElementById('btn-restart').addEventListener('click', () => {
+      if (currentSessionId !== null) startSessionById(currentSessionId);
+    });
 
     document.getElementById('direction').addEventListener('change', () => {
       if (currentCard && !cardFlipped) showCurrentCard();
@@ -903,6 +1084,13 @@
         document.getElementById('preview-russian').textContent = previewData.russian;
         document.getElementById('preview-meaning').textContent = previewData.meaning;
         document.getElementById('preview-example').textContent = previewData.example;
+        const ruWrap = document.getElementById('preview-example-ru-wrap');
+        if (previewData.exampleRu) {
+          ruWrap.style.display = 'block';
+          document.getElementById('preview-example-ru').textContent = previewData.exampleRu;
+        } else {
+          ruWrap.style.display = 'none';
+        }
       }
     }
 
@@ -947,6 +1135,7 @@
         russian: built.russian,
         meaning: built.meaning,
         example: built.example,
+        exampleRu: built.exampleRu || '',
         tags: built.tags,
         createdAt: new Date().toISOString()
       };
@@ -1138,8 +1327,9 @@
 
   window.editCard = editCard;
   window.deleteCard = deleteCard;
+  window.startSessionById = startSessionById;
 
-    startSession();
+    showSessionPicker();
   </script>
 </body>
 </html>

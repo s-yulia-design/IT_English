@@ -31,18 +31,29 @@
     return 'Слово «' + english + '» в IT и программах означает: ' + russian + '.';
   }
 
-  async function fetchTranslation(english) {
+  async function fetchTranslation(text) {
     try {
       const url = 'https://api.mymemory.translated.net/get?q=' +
-        encodeURIComponent(english) + '&langpair=en|ru';
+        encodeURIComponent(text) + '&langpair=en|ru';
       const res = await fetch(url);
       const data = await res.json();
-      const text = data?.responseData?.translatedText;
-      if (text && !text.includes('INVALID') && !text.includes('MYMEMORY WARNING')) {
-        return text.trim();
+      const translated = data?.responseData?.translatedText;
+      if (translated && !translated.includes('INVALID') && !translated.includes('MYMEMORY WARNING')) {
+        return translated.trim();
       }
     } catch (e) {}
-    return english;
+    return text;
+  }
+
+  function generateExampleRu(card, example) {
+    if (card.exampleRu) return card.exampleRu;
+    const ru = (card.russian || '').split(',')[0].trim();
+    if (!example) return '';
+    if (/^open /i.test(example)) return `Откройте «${ru}».`;
+    if (/^click /i.test(example)) return `Нажмите «${ru}».`;
+    if (/^use /i.test(example)) return `Используйте «${ru}».`;
+    const m = (card.meaning || '').split(/[.!]/)[0].trim();
+    return m ? m + '.' : `Пример: «${ru}».`;
   }
 
   async function buildCardData(english, russianOverride) {
@@ -58,22 +69,27 @@
       const meaning = (override && override !== seed.russian)
         ? generateMeaning(trimmed, russian)
         : seed.meaning;
+      const example = seed.example || generateExample(trimmed, seed.tags);
       return {
         english: trimmed,
         russian,
         meaning,
-        example: seed.example || generateExample(trimmed, seed.tags),
+        example,
+        exampleRu: seed.exampleRu || generateExampleRu(seed, example),
         tags: seed.tags || ['IT']
       };
     }
 
     const russian = override || await fetchTranslation(trimmed);
     const tags = ['IT'];
+    const example = generateExample(trimmed, tags);
+    const exampleRu = example ? await fetchTranslation(example) : '';
     return {
       english: trimmed,
       russian,
       meaning: generateMeaning(trimmed, russian),
-      example: generateExample(trimmed, tags),
+      example,
+      exampleRu: exampleRu !== example ? exampleRu : generateExampleRu({ russian, meaning: generateMeaning(trimmed, russian) }, example),
       tags
     };
   }

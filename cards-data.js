@@ -7,7 +7,8 @@ const SEED_CARDS = [
     "example": "Accept the suggested fix.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Примите предложенное исправление."
   },
   {
     "english": "access",
@@ -16,7 +17,8 @@ const SEED_CARDS = [
     "example": "You do not have access to this file.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Доступ — возможность открыть, посмотреть или изменить что-то."
   },
   {
     "english": "account",
@@ -25,7 +27,8 @@ const SEED_CARDS = [
     "example": "Create an account to get started.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Создайте аккаунт."
   },
   {
     "english": "accuracy",
@@ -34,7 +37,8 @@ const SEED_CARDS = [
     "example": "The accuracy of the model is 95%.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Точность — насколько часто ИИ отвечает правильно."
   },
   {
     "english": "Actions",
@@ -43,7 +47,8 @@ const SEED_CARDS = [
     "example": "GitHub Actions runs tests on every push.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Автоматические задачи при изменении кода: тесты, сборка, публикация."
   },
   {
     "english": "admin",
@@ -52,7 +57,8 @@ const SEED_CARDS = [
     "example": "Contact the admin for help.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Администратор — человек с полными правами управления системой."
   },
   {
     "english": "agent",
@@ -61,7 +67,8 @@ const SEED_CARDS = [
     "example": "The AI agent completed the task for you.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "ИИ-агент — программа, которая сама выполняет задачи по шагам, а не только отвечает на вопросы."
   },
   {
     "english": "Agent mode",
@@ -70,7 +77,8 @@ const SEED_CARDS = [
     "example": "Use Agent mode to implement the feature.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Используйте «режим агента»."
   },
   {
     "english": "AI",
@@ -79,7 +87,8 @@ const SEED_CARDS = [
     "example": "AI can help you write emails faster.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Сокращение от «искусственный интеллект»."
   },
   {
     "english": "algorithm",
@@ -88,7 +97,8 @@ const SEED_CARDS = [
     "example": "This algorithm sorts the list quickly.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Пошаговая инструкция для решения задачи — как рецепт, только для компьютера."
   },
   {
     "english": "analytics",
@@ -97,7 +107,8 @@ const SEED_CARDS = [
     "example": "Analytics shows how users behave.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Аналитика — сбор и разбор данных, чтобы понять, как что-то работает."
   },
   {
     "english": "API",
@@ -106,7 +117,8 @@ const SEED_CARDS = [
     "example": "Connect via the API.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Подключитесь через API."
   },
   {
     "english": "API key",
@@ -115,7 +127,8 @@ const SEED_CARDS = [
     "example": "Keep your API key secret.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Секретный ключ — пароль для доступа программы к сервису через API."
   },
   {
     "english": "app",
@@ -124,7 +137,8 @@ const SEED_CARDS = [
     "example": "Open the app on your phone.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Откройте «приложение»."
   },
   {
     "english": "application",
@@ -133,7 +147,8 @@ const SEED_CARDS = [
     "example": "Download the application from the store.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Скачайте файл на компьютер."
   },
   {
     "english": "Apply",
@@ -142,7 +157,8 @@ const SEED_CARDS = [
     "example": "Click Apply to update the file.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Нажмите Apply, чтобы обновить файл."
   },
   {
     "english": "approve",
@@ -151,7 +167,8 @@ const SEED_CARDS = [
     "example": "Approve the pull request.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Approve the pull request — по-русски: «одобрить»."
   },
   {
     "english": "archive",
@@ -160,7 +177,8 @@ const SEED_CARDS = [
     "example": "Archive old chats.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Отправьте старые чаты в архив."
   },
   {
     "english": "artifacts",
@@ -169,7 +187,8 @@ const SEED_CARDS = [
     "example": "Download the build artifacts.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Скачайте файл на компьютер."
   },
   {
     "english": "artificial intelligence",
@@ -178,7 +197,8 @@ const SEED_CARDS = [
     "example": "Artificial intelligence is changing how we work.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Искусственный интеллект — программа, которая умеет учиться и отвечать почти как человек."
   },
   {
     "english": "Ask mode",
@@ -187,7 +207,8 @@ const SEED_CARDS = [
     "example": "Switch to Ask mode to learn without edits.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Переключитесь на «режим вопросов»."
   },
   {
     "english": "assistant",
@@ -196,7 +217,8 @@ const SEED_CARDS = [
     "example": "The assistant helped me write a letter.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Помощник — ИИ или программа, которая помогает решать задачи и отвечает на вопросы."
   },
   {
     "english": "attach",
@@ -205,7 +227,8 @@ const SEED_CARDS = [
     "example": "Attach a screenshot to your message.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Прикрепите файл к сообщению."
   },
   {
     "english": "attach file",
@@ -214,7 +237,8 @@ const SEED_CARDS = [
     "example": "Attach file and ask for a summary.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Прикрепите файл к сообщению."
   },
   {
     "english": "authentication",
@@ -223,7 +247,8 @@ const SEED_CARDS = [
     "example": "Authentication failed. Check your password.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверка личности — подтверждение, что вы действительно тот, за кого себя выдаёте."
   },
   {
     "english": "authorization",
@@ -232,7 +257,8 @@ const SEED_CARDS = [
     "example": "You need authorization to access this page.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверка прав — можно ли вам делать то, что вы пытаетесь сделать."
   },
   {
     "english": "automation",
@@ -241,7 +267,8 @@ const SEED_CARDS = [
     "example": "Automation saves time on routine tasks.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Автоматизация — когда рутинные действия выполняет программа без участия человека."
   },
   {
     "english": "backend",
@@ -250,7 +277,8 @@ const SEED_CARDS = [
     "example": "The backend handles data and logic.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Внутренняя часть сайта — логика и данные, которые работают «за кулисами»."
   },
   {
     "english": "background agent",
@@ -259,7 +287,8 @@ const SEED_CARDS = [
     "example": "The background agent is still running.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "ИИ работает в фоне над задачей, пока вы занимаетесь другим."
   },
   {
     "english": "backup",
@@ -268,7 +297,8 @@ const SEED_CARDS = [
     "example": "Make a backup before you update.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Резервная копия — запасная копия данных на случай потери."
   },
   {
     "english": "blame",
@@ -277,7 +307,8 @@ const SEED_CARDS = [
     "example": "Use blame to see who edited this line.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Используйте «кто менял строку»."
   },
   {
     "english": "branch",
@@ -286,7 +317,8 @@ const SEED_CARDS = [
     "example": "Create a new branch.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Создайте новую ветку."
   },
   {
     "english": "browse",
@@ -295,7 +327,8 @@ const SEED_CARDS = [
     "example": "Enable browse to get current news.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Включите «просмотр интернета»."
   },
   {
     "english": "browser",
@@ -304,7 +337,8 @@ const SEED_CARDS = [
     "example": "Open the site in your browser.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Откройте «браузер»."
   },
   {
     "english": "bug",
@@ -313,7 +347,8 @@ const SEED_CARDS = [
     "example": "We found a bug in the login form.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Ошибка в программе — что-то работает не так, как задумано."
   },
   {
     "english": "Bugbot",
@@ -322,7 +357,8 @@ const SEED_CARDS = [
     "example": "Bugbot found a possible bug in the PR.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Автоматическая проверка ваших изменений на ошибки, как ревью от робота."
   },
   {
     "english": "button",
@@ -331,7 +367,8 @@ const SEED_CARDS = [
     "example": "Press the button to continue.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Нажмите «кнопка»."
   },
   {
     "english": "cache",
@@ -340,7 +377,8 @@ const SEED_CARDS = [
     "example": "Clear the cache if the page looks old.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Кэш — временное хранение данных для ускорения повторной загрузки."
   },
   {
     "english": "canvas",
@@ -349,7 +387,8 @@ const SEED_CARDS = [
     "example": "Open the answer in canvas to edit it.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Откройте «холст для текста»."
   },
   {
     "english": "capabilities",
@@ -358,7 +397,8 @@ const SEED_CARDS = [
     "example": "Enable web browsing in capabilities.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Включите «возможности»."
   },
   {
     "english": "chart",
@@ -367,7 +407,8 @@ const SEED_CARDS = [
     "example": "The chart shows sales by month.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "График или диаграмма — наглядное изображение чисел и тенденций."
   },
   {
     "english": "chat history",
@@ -376,7 +417,8 @@ const SEED_CARDS = [
     "example": "Find it in your chat history.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Найдите в история чатов."
   },
   {
     "english": "chatbot",
@@ -385,7 +427,8 @@ const SEED_CARDS = [
     "example": "The chatbot answered my question instantly.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Чат-бот — программа, с которой можно переписываться в чате."
   },
   {
     "english": "ChatGPT",
@@ -394,7 +437,8 @@ const SEED_CARDS = [
     "example": "Ask ChatGPT to explain this term.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Спросите ChatGPT, что означает этот термин."
   },
   {
     "english": "ChatGPT Plus",
@@ -403,7 +447,8 @@ const SEED_CARDS = [
     "example": "Upgrade to ChatGPT Plus for GPT-4.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Платный тариф ChatGPT — быстрее, умнее модель и больше возможностей."
   },
   {
     "english": "checkpoint",
@@ -412,7 +457,8 @@ const SEED_CARDS = [
     "example": "Restore from the last checkpoint.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Снимок состояния проекта — можно вернуться, если что-то пошло не так."
   },
   {
     "english": "checks",
@@ -421,7 +467,8 @@ const SEED_CARDS = [
     "example": "All checks passed successfully.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "All checks passed successfully — по-русски: «автопроверки»."
   },
   {
     "english": "cherry-pick",
@@ -430,7 +477,8 @@ const SEED_CARDS = [
     "example": "Cherry-pick this fix into release.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Скопировать одно конкретное сохранение из другой ветки."
   },
   {
     "english": "CI",
@@ -439,7 +487,8 @@ const SEED_CARDS = [
     "example": "CI failed on the last commit.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Система, которая сама проверяет и собирает код при каждом изменении."
   },
   {
     "english": "classification",
@@ -448,7 +497,8 @@ const SEED_CARDS = [
     "example": "Classification separates spam from normal mail.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Разделение объектов по категориям — например, спам или не спам."
   },
   {
     "english": "client",
@@ -457,7 +507,8 @@ const SEED_CARDS = [
     "example": "The client connects to the server.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Клиент — ваша программа или браузер, который обращается к серверу."
   },
   {
     "english": "clone",
@@ -466,7 +517,8 @@ const SEED_CARDS = [
     "example": "Clone the repository to get started.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Скопировать чужой проект с GitHub к себе на компьютер."
   },
   {
     "english": "cloud",
@@ -475,7 +527,8 @@ const SEED_CARDS = [
     "example": "Your files are saved in the cloud.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Облако — хранение и работа с данными через интернет, а не только на своём компьютере."
   },
   {
     "english": "cloud agent",
@@ -484,7 +537,8 @@ const SEED_CARDS = [
     "example": "Start a cloud agent for this task.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Начните: облачный агент."
   },
   {
     "english": "clustering",
@@ -493,7 +547,8 @@ const SEED_CARDS = [
     "example": "Clustering groups similar customers together.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Группировка похожих объектов без заранее заданных категорий."
   },
   {
     "english": "code",
@@ -502,7 +557,8 @@ const SEED_CARDS = [
     "example": "Review the code before you publish.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Просмотрите код перед сохранением."
   },
   {
     "english": "code interpreter",
@@ -511,7 +567,8 @@ const SEED_CARDS = [
     "example": "Use code interpreter to analyze the CSV.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Используйте «выполнение кода»."
   },
   {
     "english": "codebase",
@@ -520,7 +577,8 @@ const SEED_CARDS = [
     "example": "Cursor indexes your entire codebase.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Все файлы вашего проекта вместе — то, что ИИ может читать и понимать."
   },
   {
     "english": "Codespaces",
@@ -529,7 +587,8 @@ const SEED_CARDS = [
     "example": "Open the project in Codespaces.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Откройте «облачный редактор»."
   },
   {
     "english": "coding",
@@ -538,7 +597,8 @@ const SEED_CARDS = [
     "example": "Coding skills are useful in many jobs.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Программирование — написание кода для создания программ."
   },
   {
     "english": "comment",
@@ -547,7 +607,8 @@ const SEED_CARDS = [
     "example": "Leave a comment on line 42.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Текстовое замечание к строке кода или к обсуждению."
   },
   {
     "english": "commit",
@@ -556,7 +617,8 @@ const SEED_CARDS = [
     "example": "Commit your changes.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Сохраните свои изменения."
   },
   {
     "english": "compare",
@@ -565,7 +627,8 @@ const SEED_CARDS = [
     "example": "Compare main with your branch.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Посмотреть разницу между двумя ветками или коммитами."
   },
   {
     "english": "Composer",
@@ -574,7 +637,8 @@ const SEED_CARDS = [
     "example": "Open Composer to build a new feature.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Откройте Composer, чтобы создать новую функцию."
   },
   {
     "english": "configuration",
@@ -583,7 +647,8 @@ const SEED_CARDS = [
     "example": "Check the configuration settings.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверьте настройка системы."
   },
   {
     "english": "conflict",
@@ -592,7 +657,8 @@ const SEED_CARDS = [
     "example": "Resolve the merge conflict in this file.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Когда два человека изменили одно место по-разному — нужно выбрать, какая версия верная."
   },
   {
     "english": "connection",
@@ -601,7 +667,8 @@ const SEED_CARDS = [
     "example": "The connection was lost. Reconnecting...",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Подключение — связь между вашим устройством и сервером или интернетом."
   },
   {
     "english": "container",
@@ -610,7 +677,8 @@ const SEED_CARDS = [
     "example": "The app runs inside a container.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Контейнер — упакованная среда для запуска программы одинаково на разных машинах."
   },
   {
     "english": "context",
@@ -619,7 +687,8 @@ const SEED_CARDS = [
     "example": "The model lost context.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Модель потеряла контекст переписки."
   },
   {
     "english": "context window",
@@ -628,7 +697,8 @@ const SEED_CARDS = [
     "example": "This chat exceeded the context window.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Этот чат превысил объём памяти."
   },
   {
     "english": "continue",
@@ -637,7 +707,8 @@ const SEED_CARDS = [
     "example": "Click continue to finish the answer.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Нажмите «продолжить»."
   },
   {
     "english": "contributors",
@@ -646,7 +717,8 @@ const SEED_CARDS = [
     "example": "See all contributors on the repo page.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Люди, которые вносили код или правки в проект."
   },
   {
     "english": "conversation",
@@ -655,7 +727,8 @@ const SEED_CARDS = [
     "example": "Save this conversation for later.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Сохраните разговор."
   },
   {
     "english": "copy",
@@ -664,7 +737,8 @@ const SEED_CARDS = [
     "example": "Copy the answer.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Скопируйте ответ."
   },
   {
     "english": "CSS",
@@ -673,7 +747,8 @@ const SEED_CARDS = [
     "example": "CSS controls colors and fonts.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Язык стилей — задаёт цвета, шрифты и расположение элементов на странице."
   },
   {
     "english": "CSV",
@@ -682,7 +757,8 @@ const SEED_CARDS = [
     "example": "Export the table as a CSV file.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Формат таблицы в виде текста — удобен для Excel и импорта данных."
   },
   {
     "english": "Custom GPT",
@@ -691,7 +767,8 @@ const SEED_CARDS = [
     "example": "Build a Custom GPT for your team.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Ваш личный чат-бот с инструкциями, файлами и особыми навыками."
   },
   {
     "english": "DALL-E",
@@ -700,7 +777,8 @@ const SEED_CARDS = [
     "example": "Use DALL-E to create an illustration.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Используйте «генератор картинок»."
   },
   {
     "english": "dashboard",
@@ -709,7 +787,8 @@ const SEED_CARDS = [
     "example": "Go to your dashboard.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Перейдите на главную панель."
   },
   {
     "english": "data",
@@ -718,7 +797,8 @@ const SEED_CARDS = [
     "example": "Your data is stored securely.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Данные — любая информация: тексты, числа, картинки, таблицы."
   },
   {
     "english": "database",
@@ -727,7 +807,8 @@ const SEED_CARDS = [
     "example": "All users are stored in the database.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "База данных — место, где программа хранит информацию упорядоченно."
   },
   {
     "english": "dataset",
@@ -736,7 +817,8 @@ const SEED_CARDS = [
     "example": "We need a larger dataset for training.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Набор данных — коллекция примеров, на которых учат или проверяют ИИ."
   },
   {
     "english": "debug",
@@ -745,7 +827,8 @@ const SEED_CARDS = [
     "example": "Debug the code.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Найдите и исправьте ошибку в коде."
   },
   {
     "english": "debugging",
@@ -754,7 +837,8 @@ const SEED_CARDS = [
     "example": "Debugging took most of the afternoon.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Отладка — поиск и исправление ошибок в программе."
   },
   {
     "english": "deep learning",
@@ -763,7 +847,8 @@ const SEED_CARDS = [
     "example": "Deep learning powers modern image recognition.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Глубокое обучение — сложный способ обучения ИИ на больших объёмах данных."
   },
   {
     "english": "delete",
@@ -772,7 +857,8 @@ const SEED_CARDS = [
     "example": "Delete this conversation.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Удалите этот разговор."
   },
   {
     "english": "Dependabot",
@@ -781,7 +867,8 @@ const SEED_CARDS = [
     "example": "Dependabot opened a security update.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Робот GitHub, который предупреждает об устаревших и небезопасных библиотеках."
   },
   {
     "english": "deploy",
@@ -790,7 +877,8 @@ const SEED_CARDS = [
     "example": "Deploy the website.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Опубликуйте сайт в интернете."
   },
   {
     "english": "deployment",
@@ -799,7 +887,8 @@ const SEED_CARDS = [
     "example": "Deployment finished without errors.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Deployment finished without errors — по-русски: «развертывание»."
   },
   {
     "english": "design",
@@ -808,7 +897,8 @@ const SEED_CARDS = [
     "example": "We improved the design of the app.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Дизайн — внешний вид и удобство использования интерфейса."
   },
   {
     "english": "desktop",
@@ -817,7 +907,8 @@ const SEED_CARDS = [
     "example": "The desktop version has more features.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Настольный — для обычного компьютера или ноутбука."
   },
   {
     "english": "developer",
@@ -826,7 +917,8 @@ const SEED_CARDS = [
     "example": "The developer fixed the issue quickly.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Разработчик — человек, который создаёт программы и сайты."
   },
   {
     "english": "device",
@@ -835,7 +927,8 @@ const SEED_CARDS = [
     "example": "This device is not supported.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Устройство — компьютер, телефон, планшет или другое оборудование."
   },
   {
     "english": "diff",
@@ -844,7 +937,8 @@ const SEED_CARDS = [
     "example": "Review the diff before you apply.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Просмотрите изменения перед применением."
   },
   {
     "english": "Discussions",
@@ -853,7 +947,8 @@ const SEED_CARDS = [
     "example": "Ask in Discussions if you need help.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Раздел для вопросов и разговоров вокруг проекта, не привязанный к коду."
   },
   {
     "english": "Docker",
@@ -862,7 +957,8 @@ const SEED_CARDS = [
     "example": "We use Docker to deploy the service.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Популярная программа для запуска приложений в контейнерах."
   },
   {
     "english": "domain",
@@ -871,7 +967,8 @@ const SEED_CARDS = [
     "example": "We bought a new domain name.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Домен — имя сайта, например google."
   },
   {
     "english": "download",
@@ -880,7 +977,8 @@ const SEED_CARDS = [
     "example": "Download the report.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Скачайте отчёт."
   },
   {
     "english": "draft",
@@ -889,7 +987,8 @@ const SEED_CARDS = [
     "example": "Save the pull request as a draft.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Сохраните черновик."
   },
   {
     "english": "dropdown",
@@ -898,7 +997,8 @@ const SEED_CARDS = [
     "example": "Select a model from the dropdown.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Выберите модель из выпадающего списка."
   },
   {
     "english": "edit message",
@@ -907,7 +1007,8 @@ const SEED_CARDS = [
     "example": "Edit message and try a clearer prompt.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Поправить свой вопрос и получить новый ответ с учётом правки."
   },
   {
     "english": "email",
@@ -916,7 +1017,8 @@ const SEED_CARDS = [
     "example": "Check your email for the confirmation.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверьте электронная почта."
   },
   {
     "english": "embedding",
@@ -925,7 +1027,8 @@ const SEED_CARDS = [
     "example": "The embedding captures the meaning of a word.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Способ представить слово или фразу в виде чисел, чтобы ИИ мог их сравнивать и искать похожие."
   },
   {
     "english": "encryption",
@@ -934,7 +1037,8 @@ const SEED_CARDS = [
     "example": "Encryption protects your messages.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Encryption protects your messages — по-русски: «шифрование»."
   },
   {
     "english": "endpoint",
@@ -943,7 +1047,8 @@ const SEED_CARDS = [
     "example": "Call the chat endpoint.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Отправьте запрос на точку входа чата."
   },
   {
     "english": "engineer",
@@ -952,7 +1057,8 @@ const SEED_CARDS = [
     "example": "The engineer designed the system.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Инженер — специалист, который проектирует и строит технические системы."
   },
   {
     "english": "environment",
@@ -961,7 +1067,8 @@ const SEED_CARDS = [
     "example": "This environment is for testing only.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Среда — условия, в которых работает программа: тестовая или рабочая."
   },
   {
     "english": "error",
@@ -970,7 +1077,8 @@ const SEED_CARDS = [
     "example": "An error occurred. Please try again.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Ошибка — сообщение о том, что что-то пошло не так."
   },
   {
     "english": "exception",
@@ -979,7 +1087,8 @@ const SEED_CARDS = [
     "example": "The program threw an exception.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сбой в программе — неожиданная ситуация, которую код не смог обработать."
   },
   {
     "english": "Explore",
@@ -988,7 +1097,8 @@ const SEED_CARDS = [
     "example": "Go to Explore to find useful GPTs.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Перейдите в обзор."
   },
   {
     "english": "extension",
@@ -997,7 +1107,8 @@ const SEED_CARDS = [
     "example": "Install an extension from the marketplace.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Установите расширение."
   },
   {
     "english": "feature",
@@ -1006,7 +1117,8 @@ const SEED_CARDS = [
     "example": "Each feature describes one property of the data.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Признак — отдельная характеристика в данных, по которой ИИ делает вывод."
   },
   {
     "english": "feature request",
@@ -1015,7 +1127,8 @@ const SEED_CARDS = [
     "example": "Send us your feature request.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Пожелание пользователя добавить новую функцию в продукт."
   },
   {
     "english": "feedback",
@@ -1024,7 +1137,8 @@ const SEED_CARDS = [
     "example": "We appreciate your feedback.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "We appreciate your feedback — по-русски: «обратная связь»."
   },
   {
     "english": "fetch",
@@ -1033,7 +1147,8 @@ const SEED_CARDS = [
     "example": "Fetch from origin to see what's new.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Узнать, есть ли новые изменения на сервере, без слияния с вашим кодом."
   },
   {
     "english": "field",
@@ -1042,7 +1157,8 @@ const SEED_CARDS = [
     "example": "This field is required.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "This field is required — по-русски: «поле»."
   },
   {
     "english": "file",
@@ -1051,7 +1167,8 @@ const SEED_CARDS = [
     "example": "Save the file to your computer.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сохраните файл."
   },
   {
     "english": "filter",
@@ -1060,7 +1177,8 @@ const SEED_CARDS = [
     "example": "Filter by date.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Отфильтруйте по дате."
   },
   {
     "english": "fine-tune",
@@ -1069,7 +1187,8 @@ const SEED_CARDS = [
     "example": "Fine-tune the model on your data.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Дообучите модель на своих данных."
   },
   {
     "english": "fine-tuning",
@@ -1078,7 +1197,8 @@ const SEED_CARDS = [
     "example": "Fine-tuning adapts the model to your needs.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Дообучение — дополнительная настройка готовой модели под вашу конкретную задачу."
   },
   {
     "english": "folder",
@@ -1087,7 +1207,8 @@ const SEED_CARDS = [
     "example": "Create a new folder for your photos.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Создайте папка."
   },
   {
     "english": "fork",
@@ -1096,7 +1217,8 @@ const SEED_CARDS = [
     "example": "Fork the repo and make your changes.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Сделайте форк репозитория и внесите правки."
   },
   {
     "english": "form",
@@ -1105,7 +1227,8 @@ const SEED_CARDS = [
     "example": "Fill out the form and submit it.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Форма — блок с полями для ввода данных, например при регистрации."
   },
   {
     "english": "format",
@@ -1114,7 +1237,8 @@ const SEED_CARDS = [
     "example": "Format the document before saving.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Привести код к аккуратному виду: отступы, переносы строк — автоматически."
   },
   {
     "english": "framework",
@@ -1123,7 +1247,8 @@ const SEED_CARDS = [
     "example": "This framework speeds up development.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Готовый каркас для разработки — набор инструментов, ускоряющих создание программы."
   },
   {
     "english": "frontend",
@@ -1132,7 +1257,8 @@ const SEED_CARDS = [
     "example": "The frontend shows buttons and menus.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Внешняя часть сайта — то, что видит и нажимает пользователь."
   },
   {
     "english": "full-stack",
@@ -1141,7 +1267,8 @@ const SEED_CARDS = [
     "example": "She works as a full-stack developer.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Полный цикл — когда человек умеет и внешнюю, и внутреннюю часть разработки."
   },
   {
     "english": "generate",
@@ -1150,7 +1277,8 @@ const SEED_CARDS = [
     "example": "Click Generate to create a new image.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Нажмите Generate, чтобы создать новую картинку."
   },
   {
     "english": "Gist",
@@ -1159,7 +1287,8 @@ const SEED_CARDS = [
     "example": "Share the snippet as a Gist.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Небольшой фрагмент кода или текста на GitHub — удобно быстро поделиться."
   },
   {
     "english": "Git",
@@ -1168,7 +1297,8 @@ const SEED_CARDS = [
     "example": "Use Git to track your changes.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Используйте «система контроля версий Git»."
   },
   {
     "english": "GitHub",
@@ -1177,7 +1307,8 @@ const SEED_CARDS = [
     "example": "The project is hosted on GitHub.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Популярный сайт для хранения кода и совместной работы над проектами."
   },
   {
     "english": "GPTs",
@@ -1186,7 +1317,8 @@ const SEED_CARDS = [
     "example": "Explore GPTs in the store.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Откройте каталог и найдите нужное."
   },
   {
     "english": "hallucination",
@@ -1195,7 +1327,8 @@ const SEED_CARDS = [
     "example": "Watch out for hallucinations.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Остерегайтесь выдуманных ответов."
   },
   {
     "english": "history",
@@ -1204,7 +1337,8 @@ const SEED_CARDS = [
     "example": "Check the file history for older versions.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Проверьте история изменений."
   },
   {
     "english": "Hooks",
@@ -1213,7 +1347,8 @@ const SEED_CARDS = [
     "example": "Set up hooks to run checks on save.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Правила, которые срабатывают сами при определённых событиях в редакторе."
   },
   {
     "english": "hosting",
@@ -1222,7 +1357,8 @@ const SEED_CARDS = [
     "example": "We bought hosting for our website.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Хостинг — услуга размещения сайта или программы на сервере в интернете."
   },
   {
     "english": "HTML",
@@ -1231,7 +1367,8 @@ const SEED_CARDS = [
     "example": "HTML defines the structure of a page.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Язык разметки — описывает структуру веб-страницы: заголовки, кнопки, текст."
   },
   {
     "english": "indexing",
@@ -1240,7 +1377,8 @@ const SEED_CARDS = [
     "example": "Indexing helps the AI understand your project.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Cursor изучает файлы проекта, чтобы быстрее находить нужный код и отвечать точнее."
   },
   {
     "english": "inference",
@@ -1249,7 +1387,8 @@ const SEED_CARDS = [
     "example": "Inference is running.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "ИИ сейчас обрабатывает запрос."
   },
   {
     "english": "inline edit",
@@ -1258,7 +1397,8 @@ const SEED_CARDS = [
     "example": "Use inline edit to fix this function.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Используйте «правка в строке»."
   },
   {
     "english": "input",
@@ -1267,7 +1407,8 @@ const SEED_CARDS = [
     "example": "Type your input in the text box.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Входные данные — то, что вы подаёте на вход программе или ИИ."
   },
   {
     "english": "Insights",
@@ -1276,7 +1417,8 @@ const SEED_CARDS = [
     "example": "Check Insights for contributor activity.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Проверьте аналитика репозитория."
   },
   {
     "english": "instructions",
@@ -1285,7 +1427,8 @@ const SEED_CARDS = [
     "example": "Write clear instructions for your GPT.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Напишите инструкции для бота."
   },
   {
     "english": "integration",
@@ -1294,7 +1437,8 @@ const SEED_CARDS = [
     "example": "Set up an integration.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Настройте подключение к другому сервису."
   },
   {
     "english": "interface",
@@ -1303,7 +1447,8 @@ const SEED_CARDS = [
     "example": "The interface is simple and clear.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Интерфейс — всё, что вы видите и нажимаете на экране: кнопки, меню, поля."
   },
   {
     "english": "internet",
@@ -1312,7 +1457,8 @@ const SEED_CARDS = [
     "example": "You need internet to use this service.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Интернет — всемирная сеть, через которую работают сайты и онлайн-сервисы."
   },
   {
     "english": "issue",
@@ -1321,7 +1467,8 @@ const SEED_CARDS = [
     "example": "Open an issue to report the bug.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Откройте обращение."
   },
   {
     "english": "iterate",
@@ -1330,7 +1477,8 @@ const SEED_CARDS = [
     "example": "Let's iterate on this idea.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Давайте доработаем эту идею."
   },
   {
     "english": "JavaScript",
@@ -1339,7 +1487,8 @@ const SEED_CARDS = [
     "example": "JavaScript makes the page interactive.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Язык программирования для интерактивности на сайтах — анимации, кнопки, формы."
   },
   {
     "english": "JSON",
@@ -1348,7 +1497,8 @@ const SEED_CARDS = [
     "example": "The data is saved in JSON format.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Популярный текстовый формат для обмена данными между программами."
   },
   {
     "english": "knowledge",
@@ -1357,7 +1507,8 @@ const SEED_CARDS = [
     "example": "Upload PDFs to the knowledge base.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Загрузите файл на сайт."
   },
   {
     "english": "label",
@@ -1366,7 +1517,8 @@ const SEED_CARDS = [
     "example": "Add a label to each training example.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Добавьте метка."
   },
   {
     "english": "landing page",
@@ -1375,7 +1527,8 @@ const SEED_CARDS = [
     "example": "The landing page explains our product.",
     "tags": [
       "маркетинг"
-    ]
+    ],
+    "exampleRu": "Посадочная страница — простая страница с одной главной целью, например регистрация."
   },
   {
     "english": "language model",
@@ -1384,7 +1537,8 @@ const SEED_CARDS = [
     "example": "The language model understands your question.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Языковая модель — ИИ, обученный понимать и создавать текст на человеческом языке."
   },
   {
     "english": "large language model",
@@ -1393,7 +1547,8 @@ const SEED_CARDS = [
     "example": "A large language model can write long texts.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Большая языковая модель — мощная версия ИИ для текста, например ChatGPT или Claude."
   },
   {
     "english": "layout",
@@ -1402,7 +1557,8 @@ const SEED_CARDS = [
     "example": "The layout looks good on mobile.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Расположение элементов — как разложены кнопки, текст и картинки на странице."
   },
   {
     "english": "library",
@@ -1411,7 +1567,8 @@ const SEED_CARDS = [
     "example": "Import the library into your project.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Библиотека — набор готовых функций, которые можно подключить к своей программе."
   },
   {
     "english": "license",
@@ -1420,7 +1577,8 @@ const SEED_CARDS = [
     "example": "This project is under the MIT license.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Правила, по которым можно использовать чужой код — можно ли копировать и менять."
   },
   {
     "english": "link",
@@ -1429,7 +1587,8 @@ const SEED_CARDS = [
     "example": "Click the link to open the page.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Нажмите «ссылка»."
   },
   {
     "english": "lint",
@@ -1438,7 +1597,8 @@ const SEED_CARDS = [
     "example": "Lint found three warnings in this file.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Автоматическая проверка кода на ошибки и плохие привычки."
   },
   {
     "english": "LLM",
@@ -1447,7 +1607,8 @@ const SEED_CARDS = [
     "example": "This LLM answers in natural language.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Сокращение от «большая языковая модель» — умный текстовый ИИ."
   },
   {
     "english": "local",
@@ -1456,7 +1617,8 @@ const SEED_CARDS = [
     "example": "Files are stored on your local computer.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Локальный — на вашем компьютере, а не в интернете."
   },
   {
     "english": "log",
@@ -1465,7 +1627,8 @@ const SEED_CARDS = [
     "example": "Check the log for more details.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверьте журнал событий."
   },
   {
     "english": "log out",
@@ -1474,7 +1637,8 @@ const SEED_CARDS = [
     "example": "Log out when you're done.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Выйдите, когда закончите работу."
   },
   {
     "english": "loss",
@@ -1483,7 +1647,8 @@ const SEED_CARDS = [
     "example": "The loss decreased after each training round.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Показатель ошибки при обучении — чем меньше, тем лучше учится модель."
   },
   {
     "english": "machine learning",
@@ -1492,7 +1657,8 @@ const SEED_CARDS = [
     "example": "Machine learning improves with more data.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Машинное обучение — когда программа учится на примерах, а не по жёстким правилам."
   },
   {
     "english": "Marketplace",
@@ -1501,7 +1667,8 @@ const SEED_CARDS = [
     "example": "Find tools in the GitHub Marketplace.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Найдите в магазин расширений."
   },
   {
     "english": "Max mode",
@@ -1510,7 +1677,8 @@ const SEED_CARDS = [
     "example": "Enable Max mode for this large refactor.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Включите «максимальный режим»."
   },
   {
     "english": "MCP",
@@ -1519,7 +1687,8 @@ const SEED_CARDS = [
     "example": "Configure MCP servers in settings.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Способ подключить к Cursor другие программы и данные — почту, базы, API."
   },
   {
     "english": "Memories",
@@ -1528,7 +1697,8 @@ const SEED_CARDS = [
     "example": "Memories help the AI remember your style.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Cursor запоминает ваши предпочтения между сессиями — как личные заметки для ИИ."
   },
   {
     "english": "memory",
@@ -1537,7 +1707,8 @@ const SEED_CARDS = [
     "example": "Memory helps ChatGPT remember your job.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "ChatGPT запоминает факты о вас между разговорами — имя, предпочтения."
   },
   {
     "english": "mention",
@@ -1546,7 +1717,8 @@ const SEED_CARDS = [
     "example": "Mention the config file with @.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Сослаться на файл или папку в чате через @ — чтобы ИИ их увидел."
   },
   {
     "english": "menu",
@@ -1555,7 +1727,8 @@ const SEED_CARDS = [
     "example": "Open the menu in the top corner.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Откройте «меню»."
   },
   {
     "english": "merge",
@@ -1564,7 +1737,8 @@ const SEED_CARDS = [
     "example": "Merge the pull request.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Объедините запрос на слияние."
   },
   {
     "english": "merge pull request",
@@ -1573,7 +1747,8 @@ const SEED_CARDS = [
     "example": "Merge pull request when checks pass.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Объедините изменения."
   },
   {
     "english": "message",
@@ -1582,7 +1757,8 @@ const SEED_CARDS = [
     "example": "You have a new message.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сообщение — текст, который вы отправляете или получаете в чате или почте."
   },
   {
     "english": "metrics",
@@ -1591,7 +1767,8 @@ const SEED_CARDS = [
     "example": "Track the key metrics every week.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Показатели — числа, по которым судят об успехе: посещения, продажи, скорость."
   },
   {
     "english": "mobile",
@@ -1600,7 +1777,8 @@ const SEED_CARDS = [
     "example": "Use the mobile app on the go.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Используйте «мобильный»."
   },
   {
     "english": "model",
@@ -1609,7 +1787,8 @@ const SEED_CARDS = [
     "example": "Choose a model.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Выберите модель ИИ."
   },
   {
     "english": "MVP",
@@ -1618,7 +1797,8 @@ const SEED_CARDS = [
     "example": "We launched an MVP in three months.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Минимальная версия продукта — только самые нужные функции для первого запуска."
   },
   {
     "english": "network",
@@ -1627,7 +1807,8 @@ const SEED_CARDS = [
     "example": "The network connection is unstable.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сеть — соединение между компьютерами для обмена данными."
   },
   {
     "english": "neural network",
@@ -1636,7 +1817,8 @@ const SEED_CARDS = [
     "example": "A neural network learns from examples.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Нейронная сеть — система внутри ИИ, которая обрабатывает информацию слоями, похожими на работу мозга."
   },
   {
     "english": "new chat",
@@ -1645,7 +1827,8 @@ const SEED_CARDS = [
     "example": "Start a new chat for this task.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Начните: новый чат."
   },
   {
     "english": "Notepad",
@@ -1654,7 +1837,8 @@ const SEED_CARDS = [
     "example": "Save ideas in a Notepad for later.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Сохраните блокнот."
   },
   {
     "english": "notification",
@@ -1663,7 +1847,8 @@ const SEED_CARDS = [
     "example": "You have a new notification.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "У вас новое уведомление."
   },
   {
     "english": "onboarding",
@@ -1672,7 +1857,8 @@ const SEED_CARDS = [
     "example": "Complete the onboarding.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Пройдите знакомство с сервисом."
   },
   {
     "english": "open source",
@@ -1681,7 +1867,8 @@ const SEED_CARDS = [
     "example": "This is an open source project.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Проект, исходный код которого доступен всем — можно смотреть и использовать."
   },
   {
     "english": "optimization",
@@ -1690,7 +1877,8 @@ const SEED_CARDS = [
     "example": "Optimization reduced loading time.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Optimization reduced loading time — по-русски: «оптимизация»."
   },
   {
     "english": "output",
@@ -1699,7 +1887,8 @@ const SEED_CARDS = [
     "example": "Check the output before you share it.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверьте выходные данные."
   },
   {
     "english": "Pages",
@@ -1708,7 +1897,8 @@ const SEED_CARDS = [
     "example": "Publish your site with GitHub Pages.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Бесплатный хостинг простого сайта прямо из файлов на GitHub."
   },
   {
     "english": "password",
@@ -1717,7 +1907,8 @@ const SEED_CARDS = [
     "example": "Choose a strong password.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Выберите пароль."
   },
   {
     "english": "paste",
@@ -1726,7 +1917,8 @@ const SEED_CARDS = [
     "example": "Paste your text here.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Вставьте текст сюда."
   },
   {
     "english": "performance",
@@ -1735,7 +1927,8 @@ const SEED_CARDS = [
     "example": "Performance improved after the update.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Производительность — насколько быстро и плавно работает программа."
   },
   {
     "english": "permission",
@@ -1744,7 +1937,8 @@ const SEED_CARDS = [
     "example": "The app asks for camera permission.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Разрешение — право программы или человека на определённые действия."
   },
   {
     "english": "pin chat",
@@ -1753,7 +1947,8 @@ const SEED_CARDS = [
     "example": "Pin chat so you can find it quickly.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Закрепите чат вверху списка."
   },
   {
     "english": "pipeline",
@@ -1762,7 +1957,8 @@ const SEED_CARDS = [
     "example": "The pipeline processes data step by step.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Цепочка шагов обработки — данные проходят через несколько этапов подряд."
   },
   {
     "english": "Plan mode",
@@ -1771,7 +1967,8 @@ const SEED_CARDS = [
     "example": "Plan mode shows steps before any changes.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "ИИ сначала составляет план действий, вы его смотрите, потом он выполняет."
   },
   {
     "english": "platform",
@@ -1780,7 +1977,8 @@ const SEED_CARDS = [
     "example": "The platform supports many integrations.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Платформа — основа, на которой работают другие программы или сервисы."
   },
   {
     "english": "Playground",
@@ -1789,7 +1987,8 @@ const SEED_CARDS = [
     "example": "Test the API in the Playground.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Раздел для разработчиков — пробовать модели и настройки вручную."
   },
   {
     "english": "plugins",
@@ -1798,7 +1997,8 @@ const SEED_CARDS = [
     "example": "Enable plugins to book a table.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Включите «плагины»."
   },
   {
     "english": "precision",
@@ -1807,7 +2007,8 @@ const SEED_CARDS = [
     "example": "High precision means fewer false alarms.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Точность попадания — из всех ответов «да» сколько действительно верных."
   },
   {
     "english": "prediction",
@@ -1816,7 +2017,8 @@ const SEED_CARDS = [
     "example": "The prediction was surprisingly accurate.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Прогноз — то, что ИИ предсказывает на основе имеющихся данных."
   },
   {
     "english": "privacy",
@@ -1825,7 +2027,8 @@ const SEED_CARDS = [
     "example": "Read our privacy policy.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Read our privacy policy — по-русски: «конфиденциальность»."
   },
   {
     "english": "Privacy mode",
@@ -1834,7 +2037,8 @@ const SEED_CARDS = [
     "example": "Turn on Privacy mode for sensitive projects.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Включите «режим конфиденциальности»."
   },
   {
     "english": "product manager",
@@ -1843,7 +2047,8 @@ const SEED_CARDS = [
     "example": "The product manager planned the release.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Менеджер продукта — человек, который решает, какие функции нужны пользователям."
   },
   {
     "english": "profile",
@@ -1852,7 +2057,8 @@ const SEED_CARDS = [
     "example": "Update your profile photo.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Update your profile photo — по-русски: «профиль»."
   },
   {
     "english": "programmer",
@@ -1861,7 +2067,8 @@ const SEED_CARDS = [
     "example": "A programmer writes instructions for computers.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Программист — специалист, пишущий код."
   },
   {
     "english": "project",
@@ -1870,7 +2077,8 @@ const SEED_CARDS = [
     "example": "The project starts next Monday.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Проект — работа с целью и сроками, например создание нового сайта."
   },
   {
     "english": "prompt",
@@ -1879,7 +2087,8 @@ const SEED_CARDS = [
     "example": "Write a clear prompt.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Напишите понятный запрос к ИИ."
   },
   {
     "english": "prompt engineering",
@@ -1888,7 +2097,8 @@ const SEED_CARDS = [
     "example": "Good prompt engineering gives better results.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Умение правильно формулировать запросы к ИИ, чтобы получать лучшие ответы."
   },
   {
     "english": "prototype",
@@ -1897,7 +2107,8 @@ const SEED_CARDS = [
     "example": "We built a prototype in one week.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Прототип — черновая версия интерфейса для проверки идеи до полной разработки."
   },
   {
     "english": "pull",
@@ -1906,7 +2117,8 @@ const SEED_CARDS = [
     "example": "Pull the latest changes from main.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Получите последние обновления."
   },
   {
     "english": "pull request",
@@ -1915,7 +2127,8 @@ const SEED_CARDS = [
     "example": "Open a pull request for review.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Откройте запрос на слияние для проверки."
   },
   {
     "english": "push",
@@ -1924,7 +2137,8 @@ const SEED_CARDS = [
     "example": "Push your commits to GitHub.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Отправьте изменения на сервер."
   },
   {
     "english": "Python",
@@ -1933,7 +2147,8 @@ const SEED_CARDS = [
     "example": "Python is popular for AI projects.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Популярный язык программирования, часто используется в ИИ и автоматизации."
   },
   {
     "english": "query",
@@ -1942,7 +2157,8 @@ const SEED_CARDS = [
     "example": "Enter your query and press Search.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Запрос — просьба к системе найти или получить нужную информацию."
   },
   {
     "english": "rate limit",
@@ -1951,7 +2167,8 @@ const SEED_CARDS = [
     "example": "You hit the rate limit. Wait a moment.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Ограничение, сколько сообщений можно отправить за определённое время."
   },
   {
     "english": "README",
@@ -1960,7 +2177,8 @@ const SEED_CARDS = [
     "example": "Read the README before you start.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Главный текст на странице проекта — что это, как установить и пользоваться."
   },
   {
     "english": "rebase",
@@ -1969,7 +2187,8 @@ const SEED_CARDS = [
     "example": "Rebase your branch onto main.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Аккуратно наложить ваши изменения поверх свежей версии проекта."
   },
   {
     "english": "recall",
@@ -1978,7 +2197,8 @@ const SEED_CARDS = [
     "example": "Recall shows how many cases we found.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Полнота — насколько хорошо ИИ находит все нужные случаи."
   },
   {
     "english": "redo",
@@ -1987,7 +2207,8 @@ const SEED_CARDS = [
     "example": "Redo the change you just undid.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Вернуть отменённое действие — сделать «шаг вперёд» снова."
   },
   {
     "english": "refactor",
@@ -1996,7 +2217,8 @@ const SEED_CARDS = [
     "example": "Refactor this module.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Улучшите структуру этого модуля."
   },
   {
     "english": "refine",
@@ -2005,7 +2227,8 @@ const SEED_CARDS = [
     "example": "Refine the draft.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Улучшите черновик."
   },
   {
     "english": "regenerate",
@@ -2014,7 +2237,8 @@ const SEED_CARDS = [
     "example": "Regenerate the response.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Переделайте ответ, если он не подошёл."
   },
   {
     "english": "regression",
@@ -2023,7 +2247,8 @@ const SEED_CARDS = [
     "example": "Regression predicts the price tomorrow.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Предсказание числа — например, цены или температуры по известным данным."
   },
   {
     "english": "Reject",
@@ -2032,7 +2257,8 @@ const SEED_CARDS = [
     "example": "Reject this change and try again.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Отклоните это изменение и попробуйте снова."
   },
   {
     "english": "release",
@@ -2041,7 +2267,8 @@ const SEED_CARDS = [
     "example": "The new release is available now.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Выпуск — публикация новой версии продукта для пользователей."
   },
   {
     "english": "remote",
@@ -2050,7 +2277,8 @@ const SEED_CARDS = [
     "example": "Remote access is enabled.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Remote access is enabled — по-русски: «удаленный»."
   },
   {
     "english": "rename chat",
@@ -2059,7 +2287,8 @@ const SEED_CARDS = [
     "example": "Rename chat to Project Ideas.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Переименуйте чат."
   },
   {
     "english": "report",
@@ -2068,7 +2297,8 @@ const SEED_CARDS = [
     "example": "Generate a report for the manager.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Отчёт — сводка данных в удобном виде для просмотра или печати."
   },
   {
     "english": "repository",
@@ -2077,7 +2307,8 @@ const SEED_CARDS = [
     "example": "Push your code to the repository.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Отправьте изменения на сервер."
   },
   {
     "english": "request",
@@ -2086,7 +2317,8 @@ const SEED_CARDS = [
     "example": "Your request has been sent.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Запрос — обращение от вашего браузера или программы к серверу."
   },
   {
     "english": "request changes",
@@ -2095,7 +2327,8 @@ const SEED_CARDS = [
     "example": "Request changes before approval.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Request changes before approval — по-русски: «запросить правки»."
   },
   {
     "english": "requirement",
@@ -2104,7 +2337,8 @@ const SEED_CARDS = [
     "example": "Read the requirement carefully.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Read the requirement carefully — по-русски: «требование»."
   },
   {
     "english": "resolve",
@@ -2113,7 +2347,8 @@ const SEED_CARDS = [
     "example": "Resolve the conflict and save the file.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Исправить конфликт или проблему — выбрать правильный вариант."
   },
   {
     "english": "response",
@@ -2122,7 +2357,8 @@ const SEED_CARDS = [
     "example": "The response arrived in two seconds.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Ответ — то, что сервер или ИИ возвращает на ваш запрос."
   },
   {
     "english": "responsive",
@@ -2131,7 +2367,8 @@ const SEED_CARDS = [
     "example": "The site is responsive on all devices.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Адаптивный — сайт подстраивается под размер экрана телефона или компьютера."
   },
   {
     "english": "restore",
@@ -2140,7 +2377,8 @@ const SEED_CARDS = [
     "example": "Restore the file from backup.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Восстановление — возврат данных из резервной копии."
   },
   {
     "english": "review",
@@ -2149,7 +2387,8 @@ const SEED_CARDS = [
     "example": "Please review my changes.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Please review my changes — по-русски: «проверить код»."
   },
   {
     "english": "review changes",
@@ -2158,7 +2397,8 @@ const SEED_CARDS = [
     "example": "Review changes before accepting them.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Просмотрите просмотр изменений перед сохранением."
   },
   {
     "english": "roadmap",
@@ -2167,7 +2407,8 @@ const SEED_CARDS = [
     "example": "The roadmap shows plans for next year.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "План развития — что и в каком порядке будут добавлять в продукт."
   },
   {
     "english": "role",
@@ -2176,7 +2417,8 @@ const SEED_CARDS = [
     "example": "Your role defines what you can do.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Роль — набор прав пользователя в системе, например «редактор» или «гость»."
   },
   {
     "english": "rollback",
@@ -2185,7 +2427,8 @@ const SEED_CARDS = [
     "example": "Rollback the deployment.",
     "tags": [
       "разработка"
-    ]
+    ],
+    "exampleRu": "Откатите развёртывание назад."
   },
   {
     "english": "rules",
@@ -2194,7 +2437,8 @@ const SEED_CARDS = [
     "example": "Add rules to guide the AI assistant.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Добавьте правила для ИИ."
   },
   {
     "english": "scalability",
@@ -2203,7 +2447,8 @@ const SEED_CARDS = [
     "example": "Scalability matters for growing apps.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Масштабируемость — способность системы справляться с ростом нагрузки."
   },
   {
     "english": "screen",
@@ -2212,7 +2457,8 @@ const SEED_CARDS = [
     "example": "The next screen shows your results.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Экран — отдельная страница или окно в программе."
   },
   {
     "english": "scroll",
@@ -2221,7 +2467,8 @@ const SEED_CARDS = [
     "example": "Scroll down to read more.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Прокрутите вниз, чтобы прочитать дальше."
   },
   {
     "english": "search",
@@ -2230,7 +2477,8 @@ const SEED_CARDS = [
     "example": "Search your chats.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Найдите нужный чат."
   },
   {
     "english": "secrets",
@@ -2239,7 +2487,8 @@ const SEED_CARDS = [
     "example": "Store the API token in secrets.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Скрытые пароли и токены для автоматизации — не видны в коде."
   },
   {
     "english": "security",
@@ -2248,7 +2497,8 @@ const SEED_CARDS = [
     "example": "Security is our top priority.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Безопасность — защита данных и аккаунтов от взлома и кражи."
   },
   {
     "english": "server",
@@ -2257,7 +2507,8 @@ const SEED_CARDS = [
     "example": "The server is running smoothly.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сервер — мощный компьютер в интернете, который хранит сайт и обрабатывает запросы."
   },
   {
     "english": "settings",
@@ -2266,7 +2517,8 @@ const SEED_CARDS = [
     "example": "Open Settings to change the language.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Откройте настройки, чтобы сменить язык."
   },
   {
     "english": "share",
@@ -2275,7 +2527,8 @@ const SEED_CARDS = [
     "example": "Share this chat.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Поделитесь этим чатом."
   },
   {
     "english": "shared link",
@@ -2284,7 +2537,8 @@ const SEED_CARDS = [
     "example": "Create a shared link for the chat.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Создайте ссылка на чат."
   },
   {
     "english": "sidebar",
@@ -2293,7 +2547,8 @@ const SEED_CARDS = [
     "example": "Open the sidebar.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Откройте боковую панель."
   },
   {
     "english": "sign in",
@@ -2302,7 +2557,8 @@ const SEED_CARDS = [
     "example": "Sign in to continue.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Войдите, чтобы продолжить."
   },
   {
     "english": "sign up",
@@ -2311,7 +2567,8 @@ const SEED_CARDS = [
     "example": "Sign up for free.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Зарегистрируйтесь бесплатно."
   },
   {
     "english": "Skills",
@@ -2320,7 +2577,8 @@ const SEED_CARDS = [
     "example": "Add a skill for writing commit messages.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Добавьте навыки ИИ."
   },
   {
     "english": "software",
@@ -2329,7 +2587,8 @@ const SEED_CARDS = [
     "example": "This software runs on Windows and Mac.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Программное обеспечение — любые программы на компьютере или телефоне."
   },
   {
     "english": "sort",
@@ -2338,7 +2597,8 @@ const SEED_CARDS = [
     "example": "Sort the list by date.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сортировка — упорядочивание списка, например по дате или по имени."
   },
   {
     "english": "specification",
@@ -2347,7 +2607,8 @@ const SEED_CARDS = [
     "example": "The specification describes all features.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Техническое задание — подробное описание того, что нужно сделать."
   },
   {
     "english": "spreadsheet",
@@ -2356,7 +2617,8 @@ const SEED_CARDS = [
     "example": "Open the spreadsheet and fill in the numbers.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Откройте «электронная таблица»."
   },
   {
     "english": "SQL",
@@ -2365,7 +2627,8 @@ const SEED_CARDS = [
     "example": "Write an SQL query to find the data.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Напишите язык запросов к базе данных."
   },
   {
     "english": "squash",
@@ -2374,7 +2637,8 @@ const SEED_CARDS = [
     "example": "Squash the commits before merging.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Сжать несколько мелких сохранений в одно — история становится чище."
   },
   {
     "english": "star",
@@ -2383,7 +2647,8 @@ const SEED_CARDS = [
     "example": "Star this repository if you find it useful.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Поставить «звёздочку» проекту — как лайк, чтобы не потерять и показать интерес."
   },
   {
     "english": "stash",
@@ -2392,7 +2657,8 @@ const SEED_CARDS = [
     "example": "Stash your changes before switching branches.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Временно убрать незавершённые правки в сторону, чтобы переключиться на другое."
   },
   {
     "english": "status",
@@ -2401,7 +2667,8 @@ const SEED_CARDS = [
     "example": "The status is shown in green.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Статус — текущее состояние: выполнено, в процессе, ошибка."
   },
   {
     "english": "stop generating",
@@ -2410,7 +2677,8 @@ const SEED_CARDS = [
     "example": "Click stop generating to cancel.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Нажмите «Остановить», чтобы прервать ответ."
   },
   {
     "english": "subscription",
@@ -2419,7 +2687,8 @@ const SEED_CARDS = [
     "example": "Manage your subscription.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Управляйте своей подпиской."
   },
   {
     "english": "summarize",
@@ -2428,7 +2697,8 @@ const SEED_CARDS = [
     "example": "Summarize this article.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Кратко перескажите эту статью."
   },
   {
     "english": "sync",
@@ -2437,7 +2707,8 @@ const SEED_CARDS = [
     "example": "Sync across devices.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Синхронизируйте данные между устройствами."
   },
   {
     "english": "system prompt",
@@ -2446,7 +2717,8 @@ const SEED_CARDS = [
     "example": "The system prompt sets the assistant tone.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Скрытое указание для ИИ, как себя вести — задаётся разработчиком."
   },
   {
     "english": "tab completion",
@@ -2455,7 +2727,8 @@ const SEED_CARDS = [
     "example": "Tab completion saved me a lot of typing.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "ИИ дописывает код за вас по мере набора — как умное автодополнение."
   },
   {
     "english": "table",
@@ -2464,7 +2737,8 @@ const SEED_CARDS = [
     "example": "Data is shown in a table below.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Таблица — данные, расположенные в строках и столбцах."
   },
   {
     "english": "tag",
@@ -2473,7 +2747,8 @@ const SEED_CARDS = [
     "example": "Create a tag for this release.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Создайте метка версии."
   },
   {
     "english": "task",
@@ -2482,7 +2757,8 @@ const SEED_CARDS = [
     "example": "Complete this task by Friday.",
     "tags": [
       "продукт"
-    ]
+    ],
+    "exampleRu": "Завершите задача."
   },
   {
     "english": "temperature",
@@ -2491,7 +2767,8 @@ const SEED_CARDS = [
     "example": "Lower the temperature for accuracy.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Понизьте креативность для точности."
   },
   {
     "english": "temporary chat",
@@ -2500,7 +2777,8 @@ const SEED_CARDS = [
     "example": "Use temporary chat for private questions.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Используйте «временный чат»."
   },
   {
     "english": "terminal",
@@ -2509,7 +2787,8 @@ const SEED_CARDS = [
     "example": "Run the command in the terminal.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Окно для команд компьютера — можно запускать скрипты, не выходя из редактора."
   },
   {
     "english": "testing",
@@ -2518,7 +2797,8 @@ const SEED_CARDS = [
     "example": "Testing starts before every release.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Тестирование — проверка, что программа работает правильно."
   },
   {
     "english": "thread",
@@ -2527,7 +2807,8 @@ const SEED_CARDS = [
     "example": "The thread contains ten messages.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Последовательность сообщений в одном диалоге — вся переписка целиком."
   },
   {
     "english": "thumbs down",
@@ -2536,7 +2817,8 @@ const SEED_CARDS = [
     "example": "Thumbs down and explain the problem.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Отметить ответ как плохой — можно объяснить, что не так."
   },
   {
     "english": "thumbs up",
@@ -2545,7 +2827,8 @@ const SEED_CARDS = [
     "example": "Give a thumbs up if the answer helped.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Оцените ответ."
   },
   {
     "english": "toggle",
@@ -2554,7 +2837,8 @@ const SEED_CARDS = [
     "example": "Toggle dark mode on.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Включите тёмную тему."
   },
   {
     "english": "token",
@@ -2563,7 +2847,8 @@ const SEED_CARDS = [
     "example": "This request uses many tokens.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Этот запрос использует много единиц текста."
   },
   {
     "english": "tool",
@@ -2572,7 +2857,8 @@ const SEED_CARDS = [
     "example": "This tool helps you edit images.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Инструмент — программа или функция для решения конкретной задачи."
   },
   {
     "english": "tooltip",
@@ -2581,7 +2867,8 @@ const SEED_CARDS = [
     "example": "Hover to see the tooltip.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Наведите курсор, чтобы увидеть подсказку."
   },
   {
     "english": "train",
@@ -2590,7 +2877,8 @@ const SEED_CARDS = [
     "example": "Train the model on your documents.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Обучать — натренировать ИИ на своих данных или примерах."
   },
   {
     "english": "training",
@@ -2599,7 +2887,8 @@ const SEED_CARDS = [
     "example": "Model training takes several hours.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Обучение модели — процесс, когда ИИ изучает примеры и учится отвечать."
   },
   {
     "english": "translate",
@@ -2608,7 +2897,8 @@ const SEED_CARDS = [
     "example": "Translate to Russian.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Переведите на русский."
   },
   {
     "english": "UI",
@@ -2617,7 +2907,8 @@ const SEED_CARDS = [
     "example": "The UI is clean and modern.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Пользовательский интерфейс — всё, что человек видит и с чем взаимодействует на экране."
   },
   {
     "english": "undo",
@@ -2626,7 +2917,8 @@ const SEED_CARDS = [
     "example": "Press undo to revert the edit.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Нажмите «отменить»."
   },
   {
     "english": "unit test",
@@ -2635,7 +2927,8 @@ const SEED_CARDS = [
     "example": "Each unit test checks one small part.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Проверка одной маленькой части программы отдельно."
   },
   {
     "english": "update",
@@ -2644,7 +2937,8 @@ const SEED_CARDS = [
     "example": "Install the update when you are ready.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Установите обновление."
   },
   {
     "english": "upgrade",
@@ -2653,7 +2947,8 @@ const SEED_CARDS = [
     "example": "Upgrade to Pro.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Перейдите на тариф Pro."
   },
   {
     "english": "upload",
@@ -2662,7 +2957,8 @@ const SEED_CARDS = [
     "example": "Upload a PDF file.",
     "tags": [
       "сайт"
-    ]
+    ],
+    "exampleRu": "Загрузите PDF-файл."
   },
   {
     "english": "URL",
@@ -2671,7 +2967,8 @@ const SEED_CARDS = [
     "example": "Copy the URL and send it to a colleague.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Адрес страницы в интернете — то, что написано в строке браузера."
   },
   {
     "english": "user",
@@ -2680,7 +2977,8 @@ const SEED_CARDS = [
     "example": "The user signed in successfully.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Пользователь — человек, который пользуется программой или сайтом."
   },
   {
     "english": "UX",
@@ -2689,7 +2987,8 @@ const SEED_CARDS = [
     "example": "Good UX makes users happy.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Пользовательский опыт — насколько удобно и приятно пользоваться продуктом."
   },
   {
     "english": "vector",
@@ -2698,7 +2997,8 @@ const SEED_CARDS = [
     "example": "Each word is stored as a vector.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Набор чисел, которым компьютер описывает смысл слова или объекта."
   },
   {
     "english": "version",
@@ -2707,7 +3007,8 @@ const SEED_CARDS = [
     "example": "Update to the latest version.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Версия — конкретный выпуск программы с номером, например 2."
   },
   {
     "english": "virtual machine",
@@ -2716,7 +3017,8 @@ const SEED_CARDS = [
     "example": "Run the app in a virtual machine.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Виртуальный компьютер — программная копия компьютера внутри другого компьютера."
   },
   {
     "english": "visualization",
@@ -2725,7 +3027,8 @@ const SEED_CARDS = [
     "example": "The visualization makes trends clear.",
     "tags": [
       "данные"
-    ]
+    ],
+    "exampleRu": "Визуализация — показ данных в виде графиков и диаграмм."
   },
   {
     "english": "voice",
@@ -2734,7 +3037,8 @@ const SEED_CARDS = [
     "example": "Switch to voice mode on your phone.",
     "tags": [
       "ChatGPT"
-    ]
+    ],
+    "exampleRu": "Переключитесь на «голосовой режим»."
   },
   {
     "english": "watch",
@@ -2743,7 +3047,8 @@ const SEED_CARDS = [
     "example": "Watch the repo for new releases.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Подписаться на обновления репозитория — будут приходить уведомления."
   },
   {
     "english": "web page",
@@ -2752,7 +3057,8 @@ const SEED_CARDS = [
     "example": "This web page loads very fast.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Веб-страница — одна отдельная страница на сайте."
   },
   {
     "english": "web search",
@@ -2761,7 +3067,8 @@ const SEED_CARDS = [
     "example": "Use web search for the latest docs.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Используйте «поиск в интернете»."
   },
   {
     "english": "website",
@@ -2770,7 +3077,8 @@ const SEED_CARDS = [
     "example": "Our website launched last month.",
     "tags": [
       "IT"
-    ]
+    ],
+    "exampleRu": "Сайт — набор страниц в интернете под одним адресом."
   },
   {
     "english": "Wiki",
@@ -2779,7 +3087,8 @@ const SEED_CARDS = [
     "example": "Add setup steps to the Wiki.",
     "tags": [
       "GitHub"
-    ]
+    ],
+    "exampleRu": "Добавьте вики проекта."
   },
   {
     "english": "wireframe",
@@ -2788,7 +3097,8 @@ const SEED_CARDS = [
     "example": "The wireframe shows the page structure.",
     "tags": [
       "дизайн"
-    ]
+    ],
+    "exampleRu": "Черновой макет — схема страницы без цветов и картинок, только структура."
   },
   {
     "english": "workflow",
@@ -2797,7 +3107,8 @@ const SEED_CARDS = [
     "example": "Automate your workflow.",
     "tags": [
       "ИИ"
-    ]
+    ],
+    "exampleRu": "Автоматизируйте свой рабочий процесс."
   },
   {
     "english": "workspace",
@@ -2806,6 +3117,7 @@ const SEED_CARDS = [
     "example": "Open the workspace folder in Cursor.",
     "tags": [
       "Cursor"
-    ]
+    ],
+    "exampleRu": "Откройте «рабочая область»."
   }
 ];
