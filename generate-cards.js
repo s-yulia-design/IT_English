@@ -661,6 +661,22 @@ for (const card of UI_CARDS) {
 const merged = Array.from(seedMap.values()).map(enrichCard);
 merged.sort((a, b) => a.english.localeCompare(b.english, 'en'));
 
+function isBadExampleRu(exampleRu, meaning) {
+  if (!exampleRu || !meaning) return !exampleRu;
+  const norm = s => s.replace(/[.!?…]+$/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const erN = norm(exampleRu);
+  const mnN = norm(meaning);
+  if (erN === mnN) return true;
+  if (erN === norm(meaning.split(/[.!]/)[0])) return true;
+  return false;
+}
+
+const bad = merged.filter(c => isBadExampleRu(c.exampleRu, c.meaning));
+if (bad.length) {
+  console.error('Карточки с неверным exampleRu:', bad.map(c => c.english).join(', '));
+  process.exit(1);
+}
+
 const out = `// Сгенерировано: словарь.md + UI Cursor/GitHub/ChatGPT + стартовый набор\nconst SEED_CARDS = ${JSON.stringify(merged, null, 2)};\n`;
 fs.writeFileSync('cards-data.js', out, 'utf8');
 console.log('cards:', merged.length);

@@ -3,7 +3,7 @@
   "You do not have access to this file.": "У вас нет доступа к этому файлу.",
   "Create an account to get started.": "Please create an account to get started.",
   "The accuracy of the model is 95%.": "Точность модели составляет 95%.",
-  "GitHub Actions runs tests on every push.": "GitHub Actions запускает тесты при каждом нажатии.",
+  "GitHub Actions runs tests on every push.": "GitHub Actions запускает тесты при каждой отправке кода.",
   "Contact the admin for help.": "Обратитесь за помощью к администратору.",
   "The AI agent completed the task for you.": "Агент ИИ выполнил задание за вас.",
   "Use Agent mode to implement the feature.": "Используйте режим агента для реализации функции.",
