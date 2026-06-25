@@ -142,13 +142,41 @@
       background: linear-gradient(145deg, var(--surface2), var(--surface));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 24px;
+      padding: 36px 20px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       box-shadow: var(--shadow);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .btn-flip-back {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+
+    .btn-flip-back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(79, 140, 255, 0.1);
     }
 
     .card-back { transform: rotateY(180deg); }
@@ -179,21 +207,33 @@
       font-size: 0.85rem;
       color: var(--accent);
       font-style: italic;
-      max-width: 420px;
+      max-width: 100%;
+      word-break: break-word;
     }
 
     .card-example-wrap {
       margin-top: 12px;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 8px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+    }
+
+    .card-example-body {
+      width: 100%;
+      max-width: 100%;
     }
 
     .btn-speak-sm {
       margin-top: 0;
-      padding: 6px 14px;
+      padding: 6px 12px;
       font-size: 0.78rem;
+      max-width: 100%;
+      white-space: nowrap;
     }
 
     .card-hint {
@@ -425,7 +465,8 @@
       color: var(--muted);
       font-style: normal;
       margin-top: 6px;
-      max-width: 420px;
+      max-width: 100%;
+      word-break: break-word;
     }
 
     .session-list {
@@ -1026,10 +1067,16 @@
       if (!example) return '';
       return `
         <div class="card-example-wrap">
-          <div class="card-example">${esc(example)}</div>
-          ${exampleRu ? `<div class="card-example-ru">${esc(exampleRu)}</div>` : ''}
-          <button class="btn-speak btn-speak-sm btn-speak-example" type="button">🔊 Озвучить пример</button>
+          <div class="card-example-body">
+            <div class="card-example">${esc(example)}</div>
+            ${exampleRu ? `<div class="card-example-ru">${esc(exampleRu)}</div>` : ''}
+          </div>
+          <button class="btn-speak btn-speak-sm btn-speak-example" type="button">🔊 Пример</button>
         </div>`;
+    }
+
+    function renderFlipBackBtn() {
+      return `<button class="btn-flip-back" id="btn-flip-back" type="button" title="Назад к слову">↩</button>`;
     }
 
     function attachSpeakHandlers() {
@@ -1046,6 +1093,10 @@
           e.stopPropagation();
           speak(currentCard.example);
         });
+      });
+      document.getElementById('btn-flip-back')?.addEventListener('click', e => {
+        e.stopPropagation();
+        flipCardBack();
       });
     }
 
@@ -1087,6 +1138,7 @@
           <button class="btn-speak" id="btn-speak-front" type="button">🔊 Озвучить</button>
           <div class="card-hint">Нажмите, чтобы увидеть перевод</div>`;
         back.innerHTML = `
+          ${renderFlipBackBtn()}
           <div class="card-label">Перевод</div>
           <div class="card-main">${esc(currentCard.russian)}</div>
           <div class="card-meaning">${esc(currentCard.meaning)}</div>
@@ -1098,6 +1150,7 @@
           <div class="card-meaning">${esc(currentCard.meaning)}</div>
           <div class="card-hint">Нажмите, чтобы увидеть английское слово</div>`;
         back.innerHTML = `
+          ${renderFlipBackBtn()}
           <div class="card-label">Английский</div>
           <div class="card-main">${esc(currentCard.english)}</div>
           <button class="btn-speak" id="btn-speak-back" type="button">🔊 Озвучить</button>
@@ -1116,6 +1169,13 @@
       cardFlipped = true;
       document.getElementById('card').classList.add('flipped');
       document.getElementById('rating').classList.add('visible');
+    }
+
+    function flipCardBack() {
+      if (!cardFlipped) return;
+      cardFlipped = false;
+      document.getElementById('card').classList.remove('flipped');
+      document.getElementById('rating').classList.remove('visible');
     }
 
     function answerCard(grade) {
@@ -1162,7 +1222,7 @@
     });
 
     document.getElementById('card-wrap').addEventListener('click', e => {
-      if (e.target.closest('.btn-speak')) return;
+      if (e.target.closest('.btn-speak, .btn-flip-back')) return;
       flipCard();
     });
 

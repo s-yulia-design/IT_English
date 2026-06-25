@@ -47,13 +47,15 @@
 
   function generateExampleRu(card, example) {
     if (card.exampleRu) return card.exampleRu;
+    const ex = (example || '').trim();
+    if (!ex) return '';
     const ru = (card.russian || '').split(',')[0].trim();
-    if (!example) return '';
-    if (/^open /i.test(example)) return `Откройте «${ru}».`;
-    if (/^click /i.test(example)) return `Нажмите «${ru}».`;
-    if (/^use /i.test(example)) return `Используйте «${ru}».`;
-    const m = (card.meaning || '').split(/[.!]/)[0].trim();
-    return m ? m + '.' : `Пример: «${ru}».`;
+    if (/^open /i.test(ex)) return `Откройте «${ru}».`;
+    if (/^click /i.test(ex)) return `Нажмите «${ru}».`;
+    if (/^use /i.test(ex)) return `Используйте «${ru}».`;
+    if (/^sign in/i.test(ex)) return 'Войдите, чтобы продолжить.';
+    if (/^sign up/i.test(ex)) return 'Зарегистрируйтесь бесплатно.';
+    return ex;
   }
 
   async function buildCardData(english, russianOverride) {

@@ -19,6 +19,51 @@ function parseDictionaryMd() {
 
 const dict = parseDictionaryMd();
 const UI_CARDS = require('./ui-interface-cards.js');
+const EXAMPLE_BY_TEXT = fs.existsSync('example-translations.json')
+  ? JSON.parse(fs.readFileSync('example-translations.json', 'utf8'))
+  : {};
+const EXAMPLE_FIXES = {
+  "Create an account to get started.": "Создайте аккаунт, чтобы начать.",
+  "Go to your dashboard.": "Перейдите на главную панель.",
+  "Cherry-pick this fix into release.": "Перенесите это исправление в релиз.",
+  "Sort the list by date.": "Отсортируйте список по дате.",
+  "Filter by date.": "Отфильтруйте по дате.",
+  "Translate to Russian.": "Переведите на русский.",
+  "Use blame to see who edited this line.": "Узнайте, кто изменил эту строку.",
+  "Commit your changes.": "Сохраните свои изменения.",
+  "Download the report.": "Скачайте отчёт.",
+  "Delete this conversation.": "Удалите этот разговор.",
+  "Share this chat.": "Поделитесь этим чатом.",
+  "Search your chats.": "Найдите нужный чат.",
+  "Upload a PDF file.": "Загрузите PDF-файл.",
+  "Sync across devices.": "Синхронизируйте данные между устройствами.",
+  "Manage your subscription.": "Управляйте подпиской.",
+  "Sign up for free.": "Зарегистрируйтесь бесплатно.",
+  "You have a new notification.": "У вас новое уведомление.",
+  "Approve the pull request.": "Одобрите запрос на слияние.",
+  "Archive old chats.": "Отправьте старые чаты в архив.",
+  "Create a new branch.": "Создайте новую ветку.",
+  "Open the site in your browser.": "Откройте сайт в браузере.",
+  "CI failed on the last commit.": "Автопроверка не прошла на последнем коммите.",
+  "Good prompt engineering gives better results.": "Умение составлять запросы даёт лучшие результаты.",
+  "Toggle dark mode on.": "Включите тёмную тему.",
+  "Update to the latest version.": "Обновитесь до последней версии.",
+  "Upgrade to Pro.": "Перейдите на тариф Pro.",
+  "The embedding captures the meaning of a word.": "Числовое представление передаёт смысл слова.",
+  "GitHub Actions runs tests on every push.": "GitHub Actions запускает тесты при каждой отправке кода.",
+  "Write a clear prompt.": "Напишите понятный запрос к ИИ.",
+  "Click Generate to create a new image.": "Нажмите Generate, чтобы создать новую картинку.",
+  "Regenerate the response.": "Переделайте ответ, если он не подошёл.",
+  "Open Settings to change the language.": "Откройте настройки, чтобы сменить язык.",
+  "Sign in to continue.": "Войдите, чтобы продолжить.",
+  "Log out when you're done.": "Выйдите, когда закончите работу.",
+  "Select a model from the dropdown.": "Выберите модель из выпадающего списка.",
+  "Open the sidebar.": "Откройте боковую панель.",
+  "Hover to see the tooltip.": "Наведите курсор, чтобы увидеть подсказку.",
+  "Scroll down to read more.": "Прокрутите вниз, чтобы прочитать дальше.",
+  "Copy the response.": "Скопируйте ответ.",
+  "Paste your text here.": "Вставьте текст сюда."
+};
 
 const ORIGINAL_SEED = [
   { english: "prompt", russian: "запрос, подсказка", meaning: "Текст, который вы пишете ИИ, чтобы он понял, что вам нужно. Чем яснее запрос — тем лучше ответ.", example: "Write a clear prompt.", tags: ["ИИ"] },
@@ -455,11 +500,12 @@ function ruWord(card) {
 }
 
 function generateExampleRu(card) {
-  const key = card.english.toLowerCase();
-  if (card.exampleRu) return card.exampleRu;
-  if (EXAMPLE_RU[key]) return EXAMPLE_RU[key];
   const ex = (card.example || '').trim();
   if (!ex) return '';
+  if (EXAMPLE_FIXES[ex]) return EXAMPLE_FIXES[ex];
+  if (EXAMPLE_BY_TEXT[ex]) return EXAMPLE_BY_TEXT[ex];
+  const key = card.english.toLowerCase();
+  if (EXAMPLE_RU[key]) return EXAMPLE_RU[key];
   const ru = ruWord(card);
 
   const rules = [
@@ -468,7 +514,7 @@ function generateExampleRu(card) {
     [/^click /i, `Нажмите «${ru}».`],
     [/^press /i, `Нажмите «${ru}».`],
     [/^use /i, `Используйте «${ru}».`],
-    [/^check /i, `Проверьте ${ru}.`],
+    [/^check /i, `Проверьте: ${ru}.`],
     [/^enable /i, `Включите «${ru}».`],
     [/^turn on /i, `Включите «${ru}».`],
     [/^switch to /i, `Переключитесь на «${ru}».`],
@@ -504,12 +550,7 @@ function generateExampleRu(card) {
   for (const [re, text] of rules) {
     if (re.test(ex)) return text;
   }
-  if (/^[A-Z][a-z]+(\s+[a-z]+){0,3}\.$/.test(ex)) {
-    const verb = ex.replace(/\.$/, '');
-    return `${verb} — по-русски: «${ru}».`;
-  }
-  const m = (card.meaning || '').split(/[.!]/)[0].trim();
-  return m ? m + '.' : `Пример: «${ru}».`;
+  return ex;
 }
 
 const EXAMPLE_RU = {
@@ -583,8 +624,8 @@ function enrichCard(card) {
   }
   const example = card.example || generateExample(card.english, card.tags || []);
   const enriched = { ...card, russian, meaning, example };
-  const exampleRu = generateExampleRu(enriched);
-  return { ...enriched, exampleRu };
+  enriched.exampleRu = generateExampleRu(enriched);
+  return enriched;
 }
 
 function dictToCard(entry) {
